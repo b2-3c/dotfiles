@@ -7,269 +7,85 @@
     min-height: 0;
 }
 
+/* ===== Waybar Background ===== */
 window#waybar {
-    background: none;
+    background: rgba(30, 30, 46, 0.85);
     color: #cdd6f4;
+    padding: 4px 8px;
 }
 
+/* ===== Remove boxes from all modules ===== */
 #window,
 #clock,
 #pulseaudio,
 #network,
 #workspaces,
-#bluetooth,
 #tray,
 #backlight,
-#custom-swaync,
-#custom-weather,
-#custom-hyprkill,
-#custom-recorder,
-#custom-screenshot,
-#custom-miscellaneous-icon,
-#custom-cava,
 #battery,
-#custom-expand-icon {
-    background: #1e1e2e;
-    padding: 0px 10px;
-    margin-top: 3px;
-    border-radius: 5px;
+#language,
+#custom-*,
+#cpu,
+#memory,
+#temperature {
+    background: transparent;
+    margin: 0;
+    padding: 0 6px;
 }
 
-#custom-miscellaneous-icon,
-#custom-screenshot,
-#backlight,
-#custom-recorder {
-    font-weight: bolder;
-}
-
-#custom-distro {
-    background: #1e1e2e;
-    color: rgb(15, 180, 255);
-    margin-top: 3px;
-    margin-left: 3px;
-    margin-right: 0px;
-    padding: 0px 10px;
-    border-bottom-left-radius: 10px;
-}
-
-#workspaces {
-    background: #1e1e2e;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    border-radius: 0px 10px 10px 0px;
-}
-
+/* ===== Workspaces ===== */
 #workspaces button {
-    padding: 3px;
-    color: #8c91a8;
-    margin-right: 3px;
+    padding: 2px 6px;
+    color: #7e7e7e;
 }
 
-#workspaces button:hover {
-    background: inherit;
-    color: inherit;
-    border-color: inherit;
-    box-shadow: none;
-    text-decoration: none;
-    opacity: 1;
+#workspaces button.active {
+    color: #a6adc8;
 }
 
-#workspaces button.active { color: #a6adc8; }
-#workspaces button.occupied { color: #a6adc8; }
-#workspaces button.empty { color: #7e7e7e; opacity: 0.7; }
 #workspaces button.urgent {
     color: #11111b;
     background: #a6e3a1;
-    border-radius: 10px;
-}
-
-#memory, #temperature, #cpu {
-    background: #1e1e2e;
-    color: #a6adc8;
-    padding: 0px 0px;
-    margin-top: 3px;
-    margin-left: 2px;
     border-radius: 6px;
 }
 
-#custom-spotify-icon {
-    background: #1e1e2e;
-    margin-top: 3px;
-    margin-left: 3px;
-    margin-right: 1px;
-    padding: 0px 10px;
-    border-radius: 5px;
-}
-
-#custom-spotify-icon.playing { color: #1DB954; }
-#custom-spotify-icon.paused { color: #a6adc8; }
-
-#custom-spotify, #custom-cava {
-    background: #1e1e2e;
-    color: #a6adc8;
-    margin-top: 3px;
-    margin-left: 2px;
-    padding: 0px 5px;
-    border-radius: 1px 3px 3px 1px;
-}
-
-#custom-spotify.playing { color: #1DB954; }
-#custom-spotify.paused { color: #a6adc8; background: #1e1e2e; }
-
-#custom-spotify:hover, #custom-cava:hover {
-    background-color: rgba(0, 0, 0, 0.750);
-    color: #00ff00;
-    padding: 0px 5px;
-    margin-left: 2px;
-    border-radius: 3px 8px 8px 3px;
-}
-
-#custom-miscellaneous-icon {
-    margin-right: 3px;
-    border-radius: 6px;
-}
-
-#window {
-    margin-left: 60px;
-    margin-right: 60px;
-    border-radius: 10px;
-}
-
+/* ===== Clock ===== */
 #clock {
     color: #a6adc8;
-    border-radius: 10px;
+    padding: 0 12px;
 }
 
-#custom-pomodoro {
-    background: #1e1e2e;
-    color: #a6adc8;
-    margin-top: 3px;
-    margin-left: 3px;
-    padding: 0px 10px;
-    border-radius: 8px;
-}
-
-#custom-privacydots {
-    padding: 0 10px;
-    font-size: 12px;
-    letter-spacing: 3px;
-}
-
-#custom-expand-icon {
-    border-radius: 10px 0px 0px 10px;
-}
-
-#network {
-    color: #a6adc8;
-}
-
-#pulseaudio {
-    color: #a6adc8;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#pulseaudio.microphone {
-    color: #a6adc8;
-}
-
-#backlight-slider,
-#pulseaudio-slider {
-    background-color: #1e1e2e;
-    margin-top: 3px;
-    margin-left: 3px;
-    padding: 0px 10px;
-    border-radius: 10px;
-}
-
-#backlight-slider slider,
-#pulseaudio-slider slider {
-    background-color: transparent;
-    box-shadow: none;
-}
-
+/* ===== Sliders ===== */
 #backlight-slider trough,
 #pulseaudio-slider trough {
-    margin-top: 4px;
     min-width: 60px;
     min-height: 6px;
-    border-radius: 8px;
-    color: #00ff00;
+    border-radius: 6px;
+    background: #45475a;
 }
 
 #backlight-slider highlight,
 #pulseaudio-slider highlight {
-    background-color: #a6adc8;
-    border-radius: 8px;
-}
-
-#battery {
-    color: #a6adc8;
-    border-radius: 5px;
-}
-
-#language {
-    background: #1e1e2e;
-    color: #a6adc8;
-    margin-top: 3px;
-    margin-left: 3px;
-    padding: 0px 10px;
-    border-radius: 6px;
-    font-weight: bold;
-}
-
-#custom-swaync {
-    color: #a6adc8;
-    margin-right: 3px;
-    border-radius: 4px 4px 10px 4px;
-}
-
-#custom-weather { color: #a6adc8; }
-#backlight { margin-right: 3px; }
-#custom-screenshot { padding-bottom: 2px; }
-
-#custom-pc {
-    background: #1e1e2e;
-    color: #a6adc8;
-    margin-top: 3px;
-    margin-left: 2px;
-    padding: 0px 10px;
+    background: #a6adc8;
     border-radius: 6px;
 }
 
-#custom-coffee {
-    background-color: #1e1e2e;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
-    min-width: 24px;
-    margin-top: 3px;
-    padding-right: 10px;
-    border-radius: 6px;
+/* ===== Tray ===== */
+#tray {
+    padding: 0 6px;
 }
 
-#custom-coffee.coffee1 {
-    background-image: url("/home/flamingo/.config/waybar/icons/coffee_yes.svg");
-    text-shadow: 0 0 5px #a6adc8;
-}
-
-#custom-coffee.coffee2 {
-    background-image: url("/home/flamingo/.config/waybar/icons/coffee_no.svg");
-}
-
-menu {
-    background: #1e1e2e;
-    color: #a6adc8;
-}
-
+/* ===== Tooltip ===== */
 tooltip {
     background: #1e1e2e;
-    color: #a6adc8;
-    text-shadow: none;
-    border: none;
+    color: #cdd6f4;
+    border-radius: 6px;
+    padding: 6px;
 }
 
-tooltip label {
-    color: #a6adc8;
+/* ===== Menu ===== */
+menu {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    border-radius: 6px;
 }
