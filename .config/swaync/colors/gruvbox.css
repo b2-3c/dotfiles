@@ -1,0 +1,11 @@
+@define-color cc-bg rgba(50, 48, 47, 0.9);
+@define-color noti-bg rgba(60, 56, 54, 0.9);
+@define-color noti-bg-darker rgba(60, 56, 54, 0.9);
+@define-color noti-border-color #d8a657;
+@define-color noti-bg rgba(60, 56, 54, 0.9);
+@define-color noti-bg-darker rgba(60, 56, 54, 0.9);
+@define-color noti-bg-hover rgb(27, 27, 43);
+@define-color noti-bg-focus rgba(27, 27, 27, 0.9);
+@define-color text-color #f9f5d7;
+@define-color text-color-disabled #bdae93;
+@define-color bg-selected #fabd2f;
