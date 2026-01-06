@@ -1,0 +1,15 @@
+hide_scroll=true
+prompt=Launch
+normal_window=true
+no_actions=true
+line_wrap=word
+show-icons=true
+width=550
+height=335
+allow_images=true
+always_parse_args=true
+show_all=false
+term=kitty
+insensitive=true
+print_command=true
+gtk_dark=false
