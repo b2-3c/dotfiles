@@ -1,0 +1,15 @@
+actions=true
+anchor=top-right
+background-color=#F0F0F001
+border-color=#00000010
+border-radius=10
+default-timeout=2000
+font=monospace 10
+height=100
+icons=true
+ignore-timeout=true
+layer=top
+margin=10
+markup=true
+text-color=#FFFFFFFF
+width=300

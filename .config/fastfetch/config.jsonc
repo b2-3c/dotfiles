@@ -1,0 +1,78 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "/home/ahmed/.config/fastfetch/fastfetch.txt",
+    "color": {
+      "1": "#E0F7FF",
+      "2": "#C2EFFF",
+      "3": "#A4E7FF",
+      "4": "#87DEFF",
+      "5": "#6AD6FF",
+      "6": "#4DCFFF",
+      "7": "#30C7FF",
+      "8": "#13C0FF",
+      "9": "#00B8FF"
+    },
+    "padding": {
+      "top": 1,
+      "right": 3
+    }
+  },
+
+  "display": {
+    "separator": " "
+  },
+
+  "modules": [
+    "break",
+
+    {
+      "type": "title",
+      "color": {
+        "user": "#6AD6FF",
+        "at": "#A4E7FF",
+        "host": "#00B8FF"
+      }
+    },
+
+    "break",
+
+    {
+      "type": "os",
+      "key": "",
+      "keyColor": "#00B8FF"
+    },
+
+    {
+      "type": "kernel",
+      "key": "",
+      "keyColor": "#6AD6FF"
+    },
+
+    {
+      "type": "terminal",
+      "key": "",
+      "keyColor": "#30C7FF"
+    },
+
+    {
+      "type": "wm",
+      "key": "󰖲",
+      "keyColor": "#4DCFFF"
+    },
+
+    {
+      "type": "packages",
+      "key": "",
+      "keyColor": "#13C0FF"
+    },
+
+    "break",
+
+    {
+      "type": "colors",
+      "symbol": "circle"
+    }
+  ]
+}

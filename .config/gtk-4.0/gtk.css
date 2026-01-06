@@ -1,0 +1,27 @@
+/**
+ * GTK 4 reads the theme configured by gtk-theme-name, but ignores it.
+ * It does however respect user CSS, so import the theme from here.
+**/
+@import url("file:///usr/share/themes/Adwaita-dark/gtk-4.0/gtk.css");
+
+window {
+  background-color: rgba(0,0,10,.25) !important;
+  border-radius: 12px !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+box, revealer, widget, statuspage, placessidebar, scrolledwindow, stack, firstcell, columnview {
+  background-color: rgba(0,0,0,0) !important;
+}
+textview {
+  background-color: rgba(0,0,0,0.35) !important;
+}
+
+widget.sidebar-pane {
+  background-color: rgba(0,0,0,0.35) !important;
+}
+
+window, window * {
+  color: rgba(0,0,0,0)!important;
+}

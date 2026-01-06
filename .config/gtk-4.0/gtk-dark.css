@@ -1,0 +1,21 @@
+window {
+  background-color: rgba(0,0,10,.25) !important;
+  border-radius: 12px !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+box, revealer, widget, statuspage, placessidebar, scrolledwindow, stack, firstcell, columnview {
+  background-color: rgba(0,0,0,0) !important;
+}
+textview {
+  background-color: rgba(0,0,0,0.35) !important;
+}
+
+widget.sidebar-pane {
+  background-color: rgba(0,0,0,0.35) !important;
+}
+
+window, window * {
+  color: #ffffff !important;
+}

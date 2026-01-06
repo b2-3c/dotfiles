@@ -1,0 +1,35 @@
+
+.browserContainer browser {
+    border-radius: 10px !important;
+    margin: 0vh !important;
+}
+
+body {
+      background-color: rgba(0,0,0,0.1);
+   }
+#navigator-toolbox {
+      background-color: transparent !important;
+   }
+
+#browser {
+	margin: 2vh 2vh 2vh 0vh;
+   background-color: transparent !important;
+}
+
+#tabbrowser-tabpanels {
+	background: none !important;
+
+}
+#sidebar, notification-message {
+	background-color: transparent !important;
+	border-radius: 20px;
+	background: none;
+}
+
+* {
+      border-radius: 10px !important;
+   }
+
+.sidebar-button {
+   border-radius: 0;
+   }
