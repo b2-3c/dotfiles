@@ -1,25 +1,36 @@
+  GNU nano 8.7     /home/ahmed/.config/swaync/style.css
 :root {
-    --cc-bg: #282828;
-    --noti-border-color: #ebdbb2;
-    --noti-bg: #282828;
-    --noti-bg-alpha: 1;
-    --noti-bg-darker: #1d2021;
-    --noti-bg-hover: #3c3836;
-    --noti-bg-focus: #928374;
-    --noti-bg-focus: #ffffff00;
-    --noti-close-bg: rgba(255, 255, 255, 0.1);
-    --noti-close-bg-hover: rgba(255, 255, 255, 0.15);
-    --text-color: #ebdbb2;
-    --text-color-disabled: #a89984;
-    --bg-selected: #3c3836;
+    /* ===== Unified background (same as Waybar) ===== */
+    --cc-bg: rgba(226, 210, 171, 0.7);
+    --noti-bg: rgba(226, 210, 171, 0.7);
+    --noti-bg-alpha: 0.7;
+
+    /* ===== Derived / darker / hover variants ===== */
+    --noti-bg-darker: rgba(226, 210, 171, 0.85);
+    --noti-bg-hover: rgba(226, 210, 171, 0.8);
+    --noti-bg-focus: rgba(226, 210, 171, 0.75);
+
+    /* ===== Colors ===== */
+    --noti-border-color: #1e1e2e;
+    --text-color: #1e1e2e;
+    --text-color-disabled: rgba(30, 30, 46, 0.6);
+
+    --noti-close-bg: rgba(30, 30, 46, 0.15);
+    --noti-close-bg-hover: rgba(30, 30, 46, 0.25);
+
+    --bg-selected: rgba(226, 210, 171, 0.85);
+
     --accent-bg-color: #689d6a;
     --accent-fg-color: #8ec07c;
+
+    /* ===== Sizes & layout (unchanged) ===== */
     --notification-icon-size: 64px;
-    --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
+    --notification-app-icon-size: calc(var(--notification-icon-size) />
     --notification-group-icon-size: 32px;
     --border: 1px solid var(--noti-border-color);
     --border-radius: 0;
     --notification-shadow: none;
+
     --font-size-body: 12px;
     --font-size-summary: 16px;
     --font-size-title: 24px;
