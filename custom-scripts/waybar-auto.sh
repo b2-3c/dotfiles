@@ -1,22 +1,14 @@
 #!/usr/bin/env bash
 
-bar_visible=true
+# Stop Waybar when the script exits
 trap "pkill waybar; exit" SIGINT SIGTERM
 
-waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
+# Kill any running Waybar instance
+pkill waybar 2>/dev/null
+
+# Start Waybar once and keep it always visible
+waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css &
 
 while true; do
-    Y=$(hyprctl cursorpos -j | jq '.y' 2>/dev/null)
-
-    [[ -z "$Y" ]] && sleep 0.1 && continue
-
-    if (( Y <= 5 )) && $bar_visible; then
-        pkill waybar
-        bar_visible=false
-    elif (( Y > 40 )) && ! $bar_visible; then
-        waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
-        bar_visible=true
-    fi
-
-    sleep 0.1
+    sleep 1
 done
