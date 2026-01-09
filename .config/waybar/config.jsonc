@@ -24,8 +24,148 @@
     "group/audio",
     "battery",
     "hyprland/language",
-    "custom/notification"
+    "custom/notification" 
   ],
+
+  // --- Left Modules ---
+  "custom/distro": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "pkill wlogout || wlogout"
+  },
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󱓻",
+      "default": "",
+      "urgent": "󱓻"
+    },
+    "persistent-workspaces": {
+        "*": 5
+    }
+  },
+
+  "group/resource": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": true,
+      "children-class": "resource-group-item"
+    },
+    "modules": ["custom/pc", "cpu", "memory", "temperature"]
+  },
+
+  "custom/pc": { "format": " ", "tooltip": false },
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛 {usage}%"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰘚 {percentage}%"
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+
+  "group/spotify-extender": {
+    "orientation": "horizontal",
+    "drawer": { "transition-duration": 600, "transition-left-to-right": true },
+    "modules": ["custom/spotify-icon", "custom/spotify"]
+  },
+
+  "custom/spotify-icon": {
+    "format": "",
+    "on-click": "playerctl play-pause --player spotify"
+  },
+
+  "custom/spotify": {
+    "exec": "playerctl -p spotify metadata --format '{{artist}} - {{title}}' || echo ''",
+    "interval": 2,
+    "max-length": 25,
+    "on-click": "playerctl play-pause --player spotify"
+  },
+
+  // --- Center Modules ---
+  "clock": {
+    "format": "  {:%I:%M %p}", 
+    "format-alt": "  {:%A, %d %B}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+
+  "group/miscellaneous": {
+    "orientation": "horizontal",
+    "drawer": { "transition-duration": 600, "transition-left-to-right": true },
+    "modules": ["custom/miscellaneous-icon", "group/brightness"]
+  },
+
+  "custom/miscellaneous-icon": { "format": "󰍜", "tooltip": false },
+
+  "group/brightness": {
+    "orientation": "horizontal",
+    "drawer": { "transition-duration": 500, "transition-left-to-right": false },
+    "modules": ["backlight", "backlight/slider"]
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+  },
+
+  "backlight/slider": { "min": 5, "max": 100, "orientation": "horizontal" },
+
+  // --- Right Modules ---
+  "group/tray-expander": {
+    "orientation": "horizontal",
+    "drawer": { "transition-duration": 600, "transition-left-to-right": false },
+    "modules": ["custom/expand-icon", "tray"]
+  },
+
+  "custom/expand-icon": { "format": "󰶮", "tooltip": false },
+
+  "tray": { "icon-size": 16, "spacing": 10 },
+
+  "network": {
+    "format-wifi": "󰤨",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "on-click": "nm-connection-editor"
+  },
+
+  "group/audio": {
+    "orientation": "horizontal",
+    "drawer": { "transition-duration": 500, "transition-left-to-right": false },
+    "modules": ["pulseaudio", "pulseaudio/slider"]
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "on-click": "pavucontrol"
+  },
+
+  "pulseaudio/slider": { "min": 0, "max": 100, "orientation": "horizontal" },
+
+  "battery": {
+    "states": { "warning": 30, "critical": 15 },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "EN",
+    "format-ar": "AR"
+  },
 
   "custom/notification": {
     "tooltip": false,
@@ -46,25 +186,5 @@
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
-  },
-
-  "custom/distro": { "format": "", "on-click": "pkill wlogout || wlogout" },
-
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": { "active": "󱓻", "default": "", "urgent": "󱓻" },
-    "persistent-workspaces": { "*": 5 }
-  },
-
-  "clock": {
-    "format": "  {:%I:%M %p}",
-    "format-alt": "  {:%A, %d %B}"
-  },
-
-  "network": { "format-wifi": "󰤨", "format-disconnected": "󰤮" },
-
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   }
 }
