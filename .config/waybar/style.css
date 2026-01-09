@@ -1,91 +1,85 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: JetBrainsMono Nerd Font, monospace;
-    font-weight: bold;
+    font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 14px;
-    min-height: 0;
+    font-weight: bold;
 }
 
-/* ===== Waybar Background ===== */
+/* الشريط الرئيسي بخلفية صلبة وغير شفافة */
 window#waybar {
-    background: rgba(30, 30, 46, 0.85);
+    background-color: #1e1e2e; /* لون صلب (Catppuccin Mocha Base) */
     color: #cdd6f4;
-    padding: 4px 8px;
+    border-bottom: 2px solid #313244;
 }
 
-/* ===== Remove boxes from all modules ===== */
-#window,
-#clock,
-#pulseaudio,
-#network,
+/* تنسيق الموديولات */
 #workspaces,
-#tray,
+#clock,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
 #backlight,
 #battery,
 #language,
-#custom-*,
-#cpu,
-#memory,
-#temperature {
+#tray,
+#custom-distro,
+#custom-spotify,
+#custom-spotify-icon,
+#custom-swaync {
+    padding: 0 12px;
     background: transparent;
-    margin: 0;
-    padding: 0 6px;
 }
 
-/* ===== Workspaces ===== */
+/* مساحات العمل */
 #workspaces button {
-    padding: 2px 6px;
-    color: #7e7e7e;
+    padding: 0 5px;
+    color: #585b70;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #89b4fa;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 6px;
+    color: #f38ba8;
 }
 
-/* ===== Clock ===== */
+/* الساعة */
 #clock {
-    color: #a6adc8;
-    padding: 0 12px;
+    color: #cba6f7;
+    font-size: 14px;
 }
 
-/* ===== Sliders ===== */
-#backlight-slider trough,
-#pulseaudio-slider trough {
-    min-width: 60px;
-    min-height: 6px;
-    border-radius: 6px;
-    background: #45475a;
+/* البطارية */
+#battery.charging { color: #a6e3a1; }
+#battery.warning:not(.charging) { color: #fab387; }
+#battery.critical:not(.charging) { color: #f38ba8; }
+
+/* السلايدر */
+#pulseaudio-slider trough, #backlight-slider trough {
+    min-width: 80px;
+    min-height: 8px;
+    background-color: #313244;
+    border-radius: 4px;
+    margin: 0 5px;
 }
 
-#backlight-slider highlight,
-#pulseaudio-slider highlight {
-    background: #a6adc8;
-    border-radius: 6px;
+#pulseaudio-slider highlight, #backlight-slider highlight {
+    background-color: #89b4fa;
+    border-radius: 4px;
 }
 
-/* ===== Tray ===== */
-#tray {
-    padding: 0 6px;
-}
-
-/* ===== Tooltip ===== */
+/* التلميحات */
 tooltip {
-    background: #1e1e2e;
-    color: #cdd6f4;
-    border-radius: 6px;
-    padding: 6px;
+    background: #181825;
+    border: 1px solid #45475a;
+    border-radius: 8px;
 }
 
-/* ===== Menu ===== */
-menu {
-    background: #1e1e2e;
+tooltip label {
     color: #cdd6f4;
-    border-radius: 6px;
+    padding: 5px;
 }
