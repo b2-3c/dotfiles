@@ -6,14 +6,12 @@
     font-weight: bold;
 }
 
-/* الشريط الرئيسي بخلفية صلبة وغير شفافة */
 window#waybar {
-    background-color: #1e1e2e; /* لون صلب (Catppuccin Mocha Base) */
+    background-color: #1e1e2e; 
     color: #cdd6f4;
     border-bottom: 2px solid #313244;
 }
 
-/* تنسيق الموديولات */
 #workspaces,
 #clock,
 #cpu,
@@ -28,12 +26,16 @@ window#waybar {
 #custom-distro,
 #custom-spotify,
 #custom-spotify-icon,
-#custom-swaync {
+#custom-notification { /* تم تحديث الاسم هنا */
     padding: 0 12px;
     background: transparent;
 }
 
-/* مساحات العمل */
+/* تنسيق أيقونة الإشعارات */
+#custom-notification {
+    color: #fab387; /* لون مميز للأيقونة */
+}
+
 #workspaces button {
     padding: 0 5px;
     color: #585b70;
@@ -47,18 +49,15 @@ window#waybar {
     color: #f38ba8;
 }
 
-/* الساعة */
 #clock {
     color: #cba6f7;
     font-size: 14px;
 }
 
-/* البطارية */
 #battery.charging { color: #a6e3a1; }
 #battery.warning:not(.charging) { color: #fab387; }
 #battery.critical:not(.charging) { color: #f38ba8; }
 
-/* السلايدر */
 #pulseaudio-slider trough, #backlight-slider trough {
     min-width: 80px;
     min-height: 8px;
@@ -72,7 +71,6 @@ window#waybar {
     border-radius: 4px;
 }
 
-/* التلميحات */
 tooltip {
     background: #181825;
     border: 1px solid #45475a;
