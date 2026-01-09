@@ -12,6 +12,7 @@ window#waybar {
     border-bottom: 2px solid #313244;
 }
 
+/* تنسيق الموديولات */
 #workspaces,
 #clock,
 #cpu,
@@ -26,16 +27,15 @@ window#waybar {
 #custom-distro,
 #custom-spotify,
 #custom-spotify-icon,
-#custom-notification { /* تم تحديث الاسم هنا */
+#custom-notification,
+#custom-pc,
+#custom-expand-icon,
+#custom-miscellaneous-icon {
     padding: 0 12px;
     background: transparent;
 }
 
-/* تنسيق أيقونة الإشعارات */
-#custom-notification {
-    color: #fab387; /* لون مميز للأيقونة */
-}
-
+/* مساحات العمل */
 #workspaces button {
     padding: 0 5px;
     color: #585b70;
@@ -49,21 +49,23 @@ window#waybar {
     color: #f38ba8;
 }
 
+/* الساعة */
 #clock {
     color: #cba6f7;
-    font-size: 14px;
 }
 
-#battery.charging { color: #a6e3a1; }
-#battery.warning:not(.charging) { color: #fab387; }
-#battery.critical:not(.charging) { color: #f38ba8; }
+/* أيقونة الإشعارات */
+#custom-notification {
+    color: #fab387;
+    font-size: 16px;
+}
 
+/* السلايدرات (الصوت والسطوع) */
 #pulseaudio-slider trough, #backlight-slider trough {
     min-width: 80px;
     min-height: 8px;
     background-color: #313244;
     border-radius: 4px;
-    margin: 0 5px;
 }
 
 #pulseaudio-slider highlight, #backlight-slider highlight {
@@ -71,6 +73,7 @@ window#waybar {
     border-radius: 4px;
 }
 
+/* التلميحات */
 tooltip {
     background: #181825;
     border: 1px solid #45475a;
