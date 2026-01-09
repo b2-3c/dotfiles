@@ -64,7 +64,7 @@
     "backlight": { "label": "󰃟" },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12
+      "image-radius": 0
     },
     "title": { "text": "Notifications", "clear-all-button": true },
     "dnd": { "text": "Do Not Disturb" }
