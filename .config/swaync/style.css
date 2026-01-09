@@ -14,14 +14,14 @@
 .control-center {
     background: @base;
     border: 2px solid @surface;
-    border-radius: 12px;
+    border-radius: 0; /* حواف حادة */
     padding: 10px;
 }
 
-/* الأزرار العلوية الصغيرة (أزرار الاختصارات والباور) */
+/* الأزرار العلوية الصغيرة */
 .widget-menubar > box > box > button {
     background: @surface;
-    border-radius: 6px;
+    border-radius: 0; /* حواف حادة */
     margin: 2px;
     padding: 2px 8px;
     font-size: 14px;
@@ -30,7 +30,7 @@
 /* أزرار الإنترنت الكبيرة */
 .widget-buttons-grid > button {
     background: @surface;
-    border-radius: 12px;
+    border-radius: 0; /* حواف حادة */
     padding: 15px;
     margin: 5px;
     font-size: 22px;
@@ -41,7 +41,7 @@
     color: @base;
 }
 
-/* المشغل الشفاف بالكامل (بدون خلفية أو حدود) */
+/* المشغل الشفاف بالكامل */
 .widget-mpris {
     background: transparent;
     border: none;
@@ -56,7 +56,7 @@
 }
 
 .widget-mpris-album-art {
-    border-radius: 12px;
+    border-radius: 0; /* حواف حادة للغلاف */
 }
 
 .widget-mpris-title {
@@ -81,7 +81,7 @@
 /* شريط السطوع */
 .widget-backlight {
     background: #181825;
-    border-radius: 12px;
+    border-radius: 0; /* حواف حادة */
     margin: 10px 5px;
     padding: 15px;
 }
@@ -89,10 +89,12 @@
 scale trough {
     background: @surface;
     min-height: 10px;
+    border-radius: 0;
 }
 
 scale trough highlight {
     background: @blue;
+    border-radius: 0;
 }
 
 /* الإشعارات وقائمة الطاقة المنسدلة */
@@ -100,12 +102,12 @@ scale trough highlight {
     background: @surface;
     color: @text;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 0; /* حواف حادة */
 }
 
 .menu-item:hover { background: @blue; color: @base; }
 
 .notification-row .notification-background .notification {
     background: @surface;
-    border-radius: 10px;
+    border-radius: 0; /* حواف حادة للإشعارات */
 }
