@@ -10,11 +10,6 @@
   "modules": [
     "break",
     {
-      "type": "title",
-      "keyWidth": 10
-    },
-    "break",
-    {
       "type": "os",
       "key": " ",
       "keyColor": "34",
