@@ -5,62 +5,53 @@
     "height": 18
   },
   "display": {
-    "separator": " : "
+    "separator": " "
   },
   "modules": [
+    "break",
     {
       "type": "title",
-      "format": "    {6}{7}{8}"
+      "keyWidth": 10
     },
-    {
-      "type": "custom",
-      "format": "┌──────────────────────────────────────────┐"
-    },
-    {
-      "type": "chassis",
-      "key": "  󰇺 Chassis",
-      "format": "{3}"
-    },
+    "break",
     {
       "type": "os",
-      "key": "  󰣇 OS",
+      "key": " ",
+      "keyColor": "34",
       "format": "{2}"
     },
     {
       "type": "kernel",
-      "key": "   Kernel",
+      "key": " ",
+      "keyColor": "34",
       "format": "{2}"
     },
     {
-      "type": "packages",
-      "key": "  󰏗 Packages"
-    },
-    {
-      "type": "display",
-      "key": "  󰍹 Display",
-      "format": "{1}x{2} @ {3}Hz [{7}]"
+      "type": "shell",
+      "key": " ",
+      "keyColor": "34"
     },
     {
       "type": "terminal",
-      "key": "  >_ Terminal"
+      "key": " ",
+      "keyColor": "34"
     },
     {
       "type": "wm",
-      "key": "  󱗃 WM",
+      "key": " ",
+      "keyColor": "34",
       "format": "{2}"
     },
     {
       "type": "command",
-      "key": "  󱦟 OS Age ",
+      "key": "󱦟 ",
+      "keyColor": "34",
       "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
     },
     {
       "type": "uptime",
-      "key": "  󱫐 Uptime "
-    },
-    {
-      "type": "custom",
-      "format": "└──────────────────────────────────────────┘"
+      "key": " ",
+      "keyColor": "34"
     },
     "break",
     {
