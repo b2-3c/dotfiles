@@ -1,4 +1,4 @@
-# Dotfiles – Hyprland / Wayland Setup
+# Dotfiles – Hyprland
 
 ## Screenshots
 
