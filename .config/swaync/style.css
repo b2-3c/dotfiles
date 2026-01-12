@@ -1,126 +1,82 @@
-/* الألوان المستوحاة مباشرة من Waybar الخاص بك */
-@define-color main-bg      #11111b;
-@define-color main-fg      #cdd6f4;
-@define-color main-br      #313244; /* لون حواف داكن وناعم متناسق مع البار */
-@define-color module-fg    #f5e0dc;
-@define-color accent-bg    #9399b2;
-@define-color hover-bg     #313244;
-@define-color card-bg      #181825;
+/* ربط الملف بألوان Pywal لضمان التناسق التام */
+@import url("../../.config/current/wal-colors.css");
+
+/* تعريف المتغيرات بناءً على ألوان النظام */
+@define-color main-bg    @background;
+@define-color main-fg    @foreground;
+@define-color main-br    @border;
+@define-color accent     @selected-text; /* اللون المميز من خلفيتك */
+@define-color card-bg    rgba(30, 30, 46, 0.9); /* نفس خلفية كبسولات Waybar مع شفافية بسيطة */
 
 * {
-  font-family: "JetBrainsMono Nerd Font";
-  font-weight: bold;
-  font-size: 10px; /* مطابق لحجم خط البار */
-  border-radius: 0px !important; /* إجبار الحواف الحادة في كل مكان */
-  box-shadow: none;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 11px; /* مطابق لحجم Waybar */
+    border-radius: 12px !important; /* جعل الزوايا دائرية كباقي النظام */
+    box-shadow: none;
 }
 
-/* النافذة الرئيسية لمركز التنبيهات */
+/* النافذة الرئيسية */
 .control-center {
-  background: @main-bg;
-  border: 1.5px solid @main-br;
-  margin: 2px;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 1);
+    background: @main-bg;
+    border: 2px solid @main-br;
+    margin: 10px;
+    padding: 10px;
 }
 
-/* شبكة أزرار التحكم (الصوت، السطوع، الطاقة) */
+/* التنبيهات الفردية */
+.notification {
+    background: @card-bg;
+    color: @main-fg;
+    border: 1px solid @main-br;
+    margin: 8px;
+    padding: 10px;
+}
+
+.notification:hover {
+    background: @main-br;
+}
+
+/* شبكة الأزرار (الصوت، السطوع، إلخ) */
 .widget-buttons-grid {
-  background: @card-bg;
-  padding: 8px;
-  margin: 10px;
-  border: 1px solid @main-br;
+    padding: 8px;
+    margin: 5px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  background: @main-bg;
-  color: @module-fg;
-  border: 1px solid @main-br;
-  margin: 3px;
-  padding: 8px;
+    background: @card-bg;
+    color: @main-fg;
+    border: 1px solid @main-br;
+    margin: 5px;
+    padding: 10px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @accent-bg;
-  color: @main-bg;
-  border: 1px solid @accent-bg;
+    background: @accent;
+    color: @main-bg;
 }
 
-/* عنوان قسم التنبيهات */
-.widget-title {
-  color: @accent-bg;
-  background: transparent;
-  padding: 5px 10px;
-  margin: 5px 10px;
-}
-
-.widget-title > button {
-  background: @card-bg;
-  color: @main-fg;
-  border: 1px solid @main-br;
-  padding: 4px 8px;
-}
-
-.widget-title > button:hover {
-  background: @accent-bg;
-  color: @main-bg;
-}
-
-/* مظهر التنبيهات الفردية */
-.notification {
-  background: @card-bg;
-  border: 1.5px solid @main-br;
-  margin: 5px 10px;
-  padding: 0px;
-}
-
-.notification-content {
-  background: transparent;
-  padding: 10px;
-}
-
-.summary {
-  color: @module-fg;
-  font-size: 11px;
-}
-
-.body {
-  color: @main-fg;
-  font-weight: normal;
-}
-
-/* مشغل الموسيقى */
+/* مشغل الموسيقى (MPRIS) */
 .widget-mpris {
-  background: @card-bg;
-  color: @main-fg;
-  padding: 8px;
-  margin: 5px 10px;
-  border: 1px solid @main-br;
+    background: @card-bg;
+    color: @main-fg;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid @main-br;
 }
 
-.widget-mpris-player {
-  padding: 5px;
-  margin: 0px;
+/* أزرار مسح التنبيهات */
+.widget-title > button {
+    background: @accent;
+    color: @main-bg;
+    padding: 5px 10px;
 }
 
-/* أزرار الإغلاق داخل التنبيهات */
-.close-button {
-  background: @main-br;
-  color: @main-fg;
-  border: none;
-  margin: 4px;
-}
-
-.close-button:hover {
-  background: @accent-bg;
-  color: @main-bg;
-}
-
-/* أشرطة التمرير (الخلفية) */
+/* شريط التمرير */
 trough {
-  background: @main-bg;
-  border: 1px solid @main-br;
+    background: @main-bg;
 }
 
 highlight {
-  background: @accent-bg;
+    background: @accent;
 }
