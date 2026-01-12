@@ -20,6 +20,8 @@
   ],
 
   "modules-right": [
+    "custom/privacydots",
+    "group/tray-expander",
     "custom/media",
     "hyprland/language",
     "custom/wifi",
@@ -28,10 +30,9 @@
     "battery",
     "pulseaudio",
     "custom/backlight",
-    "custom/swaync" // زر الإشعارات هنا
+    "custom/swaync"
   ],
 
-  // مجموعة الموارد (المعالج والرام)
   "group/resource": {
     "orientation": "horizontal",
     "drawer": {
@@ -42,9 +43,45 @@
     "modules": ["custom/pc", "custom/cpu", "memory", "custom/cpuinfo"]
   },
 
-  "custom/pc": { "format": "  ", "tooltip": false },
+  "group/tray-expander": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray", "pulseaudio#microphone"]
+  },
 
-  // إعدادات زر الإشعارات (SwayNC)
+  "custom/privacydots": {
+    "exec": "~/.config/waybar/scripts/privacy_dots.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true,
+    "escape": false,
+    "markup": "pango"
+  },
+
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10
+  },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "on-click": "pamixer --default-source -t",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5
+  },
+
   "custom/swaync": {
     "tooltip": true,
     "format": "{icon}",
@@ -62,7 +99,7 @@
     "escape": true
   },
 
-  // بقية الوحدات
+  "custom/pc": { "format": "  ", "tooltip": false },
   "custom/ws": { "format": "  " },
   "hyprland/workspaces": { "format": "{icon}" },
   "hyprland/window": { "format": "{}" },
