@@ -158,9 +158,6 @@ mkdir -p ~/.config/current/Wallpapers
 mkdir -p ~/Wallpapers/Pictures   # Put image wallpapers here
 mkdir -p ~/Wallpapers/Videos     # Put mp4 wallpapers here
 ```
-
-
-
 ---
 
 ## ❗ Important Notes
@@ -172,13 +169,7 @@ mkdir -p ~/Wallpapers/Videos     # Put mp4 wallpapers here
 ---
 
 ## 📝 Notes & Credits
-
-* Some scripts, TOML configs, and CSS files are modified versions of work found in **Omarchy**
-* I take **no credit** for code not originally written by me
 * GTK CSS is experimental and slightly broken — improvements are welcome
-* Firefox `userChrome.css` requires additional setup (see online guides)
-* Home Manager may compress Waybar JSONC files into one-liners — reformat if needed
-
 ---
 
 ## 🤝 Contributions
