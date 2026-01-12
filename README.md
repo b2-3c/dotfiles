@@ -119,10 +119,6 @@ Below is a **non-exhaustive but required** list of programs needed for everythin
 * noto-fonts-emoji
 * font-awesome
 
-### Additional Waybar Modules
-
-* waybar-module-pomodoro
-  [https://github.com/Andeskjerf/waybar-module-pomodoro](https://github.com/Andeskjerf/waybar-module-pomodoro)
 
 ---
 
