@@ -50,24 +50,19 @@
   ],
 
   "modules-right": [
-    "custom/left6",
-    "hyprland/language",
 
     "custom/media",         // media info
 
     "custom/left6",
-    "pulseaudio",           // output device
+    "hyprland/language",
 
     "custom/left7",
-    "custom/backlight",     // brightness
 
     "custom/left8",
     "battery",              // battery
 
     "custom/leftin2",
-    "custom/swaync",
-
-    "custom/power"          // power button
+    "group/hardware"
   ],
 
   // === Modules ===
@@ -332,35 +327,42 @@
     "max-length": 35
   },
 
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟 {volume}%",
+"group/hardware": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "custom/backlight",
+      "custom/swaync"
+    ]
+  },
 
+"pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
     "format-icons": {
       "default": ["󰕿", "󰖀", "󰕾"],
       "headphone": "󰋋",
       "headset": "󰋋"
     },
-
     "tooltip": true,
-    "tooltip-format": "Device: {desc}",
+    "tooltip-format": "Volume: {volume}% - Device: {desc}",
     "on-click": "~/.config/waybar/scripts/volume-control.sh -o m",
     "on-scroll-up": "~/.config/waybar/scripts/volume-control.sh -o i",
     "on-scroll-down": "~/.config/waybar/scripts/volume-control.sh -o d",
-    "min-length": 6,
-    "max-length": 6
+    "min-length": 2,
+    "max-length": 2
   },
 
-  "custom/backlight": {
+"custom/backlight": {
     "exec": "~/.config/waybar/scripts/brightness-control.sh",
     "return-type": "json",
-    "format": "{}",
+    "format": "{}",  // هذا السطر مهم جداً ليعرض النص القادم من السكربت
     "tooltip": true,
     "on-scroll-up": "~/.config/waybar/scripts/brightness-control.sh -o i",
     "on-scroll-down": "~/.config/waybar/scripts/brightness-control.sh -o d",
     "interval": 1,
-    "min-length": 6,
-    "max-length": 6
+    "min-length": 1, // قمت بتقليله ليتناسب مع أيقونة واحدة
+    "max-length": 3
   },
 
   "battery": {
@@ -394,7 +396,7 @@
   "custom/swaync": {
     "tooltip": true,
     "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
-    "format": "{} {icon} ",
+    "format": "{icon}",
     "format-icons": {
       "notification": "<span foreground='red'><sup></sup></span>",
       "none": "",
