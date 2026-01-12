@@ -3,7 +3,7 @@
 ## Screenshots
 
 <details>
-<summary> Dark Theme
+<summary> Screenshots
 </summary>
 
 ![Screenshot](screenshots/1.png)
