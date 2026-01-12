@@ -9,59 +9,28 @@
 
   // === Positions ===
 
-  "modules-left": [
-    "custom/ws",            // window icon
-    "custom/left1",
-
-    "hyprland/workspaces",  // workspaces
-    "custom/right1",
-
-    "custom/paddw",
-    "hyprland/window"       // window title
+"modules-left": [
+    "custom/ws",
+    "hyprland/workspaces",
+    "hyprland/window"
   ],
 
   "modules-center": [
-    "custom/paddc",
-    "custom/left2",
-    "custom/cpuinfo",       // temperature
-
-    "custom/left3",
-    "memory",               // memory
-
-    "custom/left4",
-    "custom/cpu",           // cpu
-    "custom/leftin1",
-
-    "custom/left5",
-    "idle_inhibitor",       // distro icon
-    "custom/right2",
-
-    "custom/rightin1",
-    "clock#time",           // time
-    "custom/right3",
-
-    "clock#date",           // date
-    "custom/right4",
-
-    "custom/wifi",          // wi-fi
-    "bluetooth",            // bluetooth
-    "custom/update",        // system update
-    "custom/right5"
+    "custom/cpuinfo",
+    "memory",
+    "custom/cpu",
+    "idle_inhibitor",
+    "clock#time",
+    "clock#date",
+    "custom/wifi",
+    "bluetooth",
+    "custom/update"
   ],
 
   "modules-right": [
-
-    "custom/media",         // media info
-
-    "custom/left6",
+    "custom/media",
     "hyprland/language",
-
-    "custom/left7",
-
-    "custom/left8",
-    "battery",              // battery
-
-    "custom/leftin2",
+    "battery",
     "group/hardware"
   ],
 
