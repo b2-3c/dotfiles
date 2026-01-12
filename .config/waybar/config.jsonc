@@ -148,7 +148,7 @@
   "memory": { "format": "󰘚 {percentage}%", "interval": 5 },
   "custom/cpu": { "exec": "~/.config/waybar/scripts/cpu-usage.sh", "return-type": "json", "interval": 5 },
   "idle_inhibitor": { "format": " " },
-  "clock#time": { "format": "󱑂 {:%H:%M}" },
+  "clock#time": { "format": "󱑂 {:%I:%M %p}" },
   "clock#date": { "format": "󰨳 {:%m-%d}" },
   "custom/wifi": { "exec": "~/.config/waybar/scripts/wifi-status.sh", "return-type": "json", "interval": 1 },
   "bluetooth": { "format": "󰂰" },
