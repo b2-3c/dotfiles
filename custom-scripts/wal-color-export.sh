@@ -47,4 +47,10 @@ swaync-client -rs
 pkill walker
 # walker --daemon & disown
 
+# 4. تحديث ألوان Kitty فوراً (للنوافذ المفتوحة)
+# هذا الأمر يرسل إشارة لـ Kitty لتحديث الثيم بدون إغلاقه
+if pgrep -x "kitty" > /dev/null; then
+    kitten themes --reload-in=all Pywal
+fi
+
 echo "Theme updated successfully!"
