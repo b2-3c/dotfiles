@@ -1,6 +1,6 @@
 # Dotfiles – Hyprland / Wayland Setup
 
-![Waybar Screenshot](Screenshots/1.png)
+![Waybar Screenshot](screenshots/1.png)
 
 A personal **Hyprland + Waybar** dotfiles setup focused on a clean Wayland workflow.
 These dotfiles are primarily tested on **NixOS**, but most parts should work on other Linux distributions with minimal adjustments.
