@@ -33,3 +33,5 @@ sed -i "s|<foreground>|$(hex_to_rgba "$FG" 0.9)|g" "$OUT"
 sed -i "s|<background>|$(hex_to_rgba "$BG" 0.9)|g" "$OUT"
 
 pkill walker
+pkill waybar
+waybar &
