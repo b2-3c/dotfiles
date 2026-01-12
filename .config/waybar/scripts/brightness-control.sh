@@ -19,9 +19,9 @@ send_notification() {
 # Get the current brightness percentage and device name
 get_brightness() {
   brightness=$(brightnessctl -m | grep -o '[0-9]\+%' | head -c-2)
-  device=$(brightnessctl -m | head -n 1 | awk -F',' '{print $1}' | sed 's/_/ /g; s/\<./\U&/g') # Get device name
-  current_brightness=$(brightnessctl -m | head -n 1 | awk -F',' '{print $3}')                  # Get current brightness
-  max_brightness=$(brightnessctl -m | head -n 1 | awk -F',' '{print $5}')                      # Get max brightness
+  device=$(brightnessctl -m | head -n 1 | awk -F',' '{print $1}' | sed 's/_/ /g; s/\<./\U&/g')
+  current_brightness=$(brightnessctl -m | head -n 1 | awk -F',' '{print $3}')
+  max_brightness=$(brightnessctl -m | head -n 1 | awk -F',' '{print $5}')
 }
 get_brightness
 
@@ -59,6 +59,9 @@ while getopts o: opt; do
   esac
 done
 
+# تحديث القيمة بعد التغيير ليتم عرضها بشكل صحيح
+get_brightness
+
 # Determine the icon based on brightness level
 get_icon() {
   if ((brightness <= 5)); then
@@ -82,11 +85,14 @@ get_icon() {
   fi
 }
 
-# Backlight module and tooltip
 get_icon
-module="${icon} ${brightness}%"
 
-tooltip="Device Name: ${device}"
-tooltip+="\nBrightness:  ${current_brightness} / ${max_brightness}"
+# --- التعديل هنا ---
+# جعل النص (text) يحتوي على الأيقونة فقط
+module="${icon}" 
+
+# إضافة النسبة المئوية في الـ Tooltip لتبقى متاحة عند الحاجة
+tooltip="Brightness: ${brightness}%\nDevice: ${device}"
+tooltip+="\nRaw: ${current_brightness} / ${max_brightness}"
 
 echo "{\"text\": \"${module}\", \"tooltip\": \"${tooltip}\"}"
