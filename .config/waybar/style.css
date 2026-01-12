@@ -13,7 +13,7 @@ window#waybar {
     background: transparent;
 }
 
-/* الكبسولات المستقلة */
+/* الكبسولات المستقلة لجميع الوحدات */
 #custom-ws,
 #workspaces,
 #idle_inhibitor,
@@ -28,7 +28,7 @@ window#waybar {
 #pulseaudio,
 #custom-backlight,
 #custom-swaync, 
-#custom-pc {
+#custom-privacydots {
     background: #1e1e2e;
     color: @module-fg;
     padding: 0 10px;
@@ -36,21 +36,54 @@ window#waybar {
     border-radius: 12px;
 }
 
-/* تنسيق مجموعة الموارد (الدرج) */
-#custom-pc { margin-right: 0; border-radius: 12px 0 0 12px; }
-#custom-cpu, #memory, #custom-cpuinfo { background: #1e1e2e; color: @module-fg; margin: 4px 0; padding: 0 8px; }
-#custom-cpuinfo { border-radius: 0 12px 12px 0; padding-right: 12px; }
-
-/* لون خاص لزر الإشعارات لتمييزه */
-#custom-swaync {
-    color: #f38ba8; /* لون أحمر هادئ للأيقونة */
-    padding-right: 12px;
+/* --- تنسيق مجموعة الموارد (Resource Group) --- */
+#custom-pc { 
+    background: #1e1e2e; 
+    color: @module-fg; 
+    margin: 4px 0 4px 3px; 
+    padding: 0 10px; 
+    border-radius: 12px 0 0 12px; 
+}
+#custom-cpu, #memory, #custom-cpuinfo { 
+    background: #1e1e2e; 
+    color: @module-fg; 
+    margin: 4px 0; 
+    padding: 0 8px; 
+}
+#custom-cpuinfo { 
+    border-radius: 0 12px 12px 0; 
+    padding-right: 12px; 
 }
 
+/* --- تنسيق مجموعة درج الأيقونات (Tray Expander) --- */
+#custom-expand-icon { 
+    background: #1e1e2e; 
+    color: #a6adc8;
+    margin: 4px 0; 
+    padding: 0 10px; 
+    border-radius: 12px 0 0 12px; 
+}
+#tray { 
+    background: #1e1e2e; 
+    margin: 4px 0; 
+    padding: 0 10px; 
+}
+#pulseaudio.microphone { 
+    background: #1e1e2e; 
+    color: #a6adc8;
+    margin: 4px 3px 4px 0; 
+    padding: 0 10px; 
+    border-radius: 0 12px 12px 0; 
+}
+
+/* تحسينات إضافية */
 #workspaces button { color: #8c91a8; padding: 0 4px; }
 #workspaces button.active { color: #a6e3a1; }
 
-#workspaces button:hover, #custom-swaync:hover, #pulseaudio:hover {
+#custom-swaync { color: #f38ba8; }
+#custom-privacydots { color: #f38ba8; }
+
+#workspaces button:hover, #custom-swaync:hover, #pulseaudio:hover, #custom-expand-icon:hover {
     background: #313244;
 }
 
