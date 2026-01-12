@@ -2,6 +2,12 @@
 
 ![Waybar Screenshot](screenshots/1.png)
 
+![Waybar Screenshot](screenshots/2.png)
+
+![Waybar Screenshot](screenshots/3-1.png)
+
+![Waybar Screenshot](screenshots/3-2.png)
+
 A personal **Hyprland + Waybar** dotfiles setup focused on a clean Wayland workflow.
 These dotfiles are primarily tested on **NixOS**, but most parts should work on other Linux distributions with minimal adjustments.
 
