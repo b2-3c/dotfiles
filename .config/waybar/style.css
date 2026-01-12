@@ -1,5 +1,6 @@
-/* --- الإعدادات العامة --- */
 * {
+    border: none;
+    border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 11px;
@@ -8,135 +9,53 @@
 
 @import "theme.css";
 
-/* --- خلفية الشريط الرئيسي --- */
 window#waybar {
-    background: transparent; /* جعل الشريط شفافاً لتبرز الكبسولات */
+    background: transparent;
 }
 
-window#waybar > box {
-    background-color: transparent;
-    margin: 4px;
-}
-
-/* --- التلميحات (Tooltips) --- */
-tooltip {
-    background: @main-bg;
-    border: 1.5px solid @main-br;
-    border-radius: 10px;
-}
-tooltip label {
-    color: @main-fg;
-    font-weight: normal;
-    padding: 4px;
-}
-
-/* --- تنسيق الكبسولات الموحد --- */
-/* هذا القسم يعطي الشكل الدائري لكل الوحدات */
+/* الكبسولات المستقلة */
 #custom-ws,
 #workspaces,
-#custom-cpuinfo,
-#memory,
-#custom-cpu,
 #idle_inhibitor,
-#clock.time,
-#clock.date,
+#clock,
 #custom-wifi,
 #bluetooth,
 #custom-update,
 #custom-media,
 #battery,
 #language,
-#window {
-    background-color: @base;
-    color: @module-fg;
-    border-radius: 12px;
-    margin: 2px 4px;
-    padding: 0 10px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
-}
-
-/* --- تخصيص مساحة عنوان النافذة --- */
-#window {
-    background: transparent;
-    box-shadow: none;
-    color: @main-fg;
-}
-
-/* --- تنسيق أزرار مساحات العمل --- */
-#workspaces button {
-    color: @module-fg;
-    border-radius: 8px;
-    margin: 3px 1px;
-    padding: 0 4px;
-}
-#workspaces button:hover {
-    background: @hover-bg;
-    color: @hover-fg;
-}
-#workspaces button.active {
-    background: @active-bg;
-    color: @active-fg;
-    padding: 0 8px;
-}
-
-/* --- تنسيق مجموعة الهاردوير (الصوت، الإضاءة، الإشعارات) --- */
-/* جعلها تظهر ككتلة واحدة مقسمة داخلياً */
+#window,
 #pulseaudio,
 #custom-backlight,
-#custom-swaync {
-    background: @power; /* يستخدم لون البروز الخاص بـ Pywal */
-    color: @main-bg;
-    margin: 2px 0;
-    padding: 0 8px;
-}
-
-#pulseaudio {
-    border-radius: 12px 0 0 12px; /* تدوير جهة اليسار فقط */
-    margin-left: 4px;
-}
-
-#custom-backlight {
-    border-radius: 0; /* بقاء الوسط مستطيلاً */
-}
-
-#custom-swaync {
-    border-radius: 0 12px 12px 0; /* تدوير جهة اليمين فقط */
-    margin-right: 4px;
-}
-
-/* --- حالات خاصة (تحذيرات) --- */
-#memory.warning, #battery.warning {
-    color: @warning;
-}
-#memory.critical, #battery.critical {
-    color: @critical;
-}
-#battery.charging {
-    color: @charging;
-}
-
-/* --- زر الطاقة المنفصل --- */
-#custom-power {
-    color: @main-bg;
-    background: @power;
+#custom-swaync, 
+#custom-pc {
+    background: #1e1e2e;
+    color: @module-fg;
+    padding: 0 10px;
+    margin: 4px 3px;
     border-radius: 12px;
-    margin: 2px 4px;
-    padding: 0 12px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
-/* --- تأثيرات التحويم (Hover) --- */
-#custom-wifi:hover,
-#bluetooth:hover,
-#custom-update:hover,
-#clock:hover,
-#pulseaudio:hover,
-#custom-backlight:hover,
-#custom-swaync:hover,
-#custom-power:hover {
-    background-color: @hover-bg;
-    color: @hover-fg;
+/* تنسيق مجموعة الموارد (الدرج) */
+#custom-pc { margin-right: 0; border-radius: 12px 0 0 12px; }
+#custom-cpu, #memory, #custom-cpuinfo { background: #1e1e2e; color: @module-fg; margin: 4px 0; padding: 0 8px; }
+#custom-cpuinfo { border-radius: 0 12px 12px 0; padding-right: 12px; }
+
+/* لون خاص لزر الإشعارات لتمييزه */
+#custom-swaync {
+    color: #f38ba8; /* لون أحمر هادئ للأيقونة */
+    padding-right: 12px;
 }
 
-/* --- حذف تنسيقات الأسهم القديمة --- */
-/* قمت بإزالة جميع محددات custom-left و custom-right */
+#workspaces button { color: #8c91a8; padding: 0 4px; }
+#workspaces button.active { color: #a6e3a1; }
+
+#workspaces button:hover, #custom-swaync:hover, #pulseaudio:hover {
+    background: #313244;
+}
+
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border: 1px solid @power;
+}
