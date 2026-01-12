@@ -77,6 +77,8 @@ tooltip label {
 #pulseaudio,
 #custom-backlight,
 #battery,
+#language,
+#custom-swaync
 #custom-power {
   opacity: 1;
   color: @module-fg;
@@ -357,6 +359,33 @@ tooltip label {
   padding-right: 6px;
   padding-left: 9px;
 }
+#custom-power:hover {
+  color: @hover-fg;
+  background: @hover-bg;
+  text-shadow: none;
+  box-shadow: none;
+}
+/* Language */
+#language {
+  background: @language;
+  padding-left: 5px;
+}
+/* == Notification & Power Buttons (Matched Style) == */
+
+#custom-swaync,
+#custom-power {
+  color: @main-bg;          /* لون الأيقونة (غامق ليتباين مع الخلفية الفاتحة) */
+  background: @power;       /* نفس لون خلفية زر الطاقة */
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 0 2px 1px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;      /* حواف دائرية */
+  margin: 2px 4px;          /* مسافة بين الأزرار */
+  padding-right: 8px;
+  padding-left: 8px;
+  min-width: 20px;
+}
+
+#custom-swaync:hover,
 #custom-power:hover {
   color: @hover-fg;
   background: @hover-bg;
