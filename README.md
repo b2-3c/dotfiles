@@ -1,12 +1,18 @@
 # Dotfiles – Hyprland / Wayland Setup
 
-![Waybar Screenshot](screenshots/1.png)
+## Screenshots
 
-![Waybar Screenshot](screenshots/2.png)
+<details>
+<summary> Dark Theme
+</summary>
 
-![Waybar Screenshot](screenshots/3-1.png)
+![Screenshot](screenshots/1.png)
+![Screenshot](screenshots/2.png)
+![Screenshot](screenshots/3-1.png)
+![Screenshot](screenshots/3-2.png)
 
-![Waybar Screenshot](screenshots/3-2.png)
+</details>
+
 
 A personal **Hyprland + Waybar** dotfiles setup focused on a clean Wayland workflow.
 These dotfiles are primarily tested on **NixOS**, but most parts should work on other Linux distributions with minimal adjustments.
