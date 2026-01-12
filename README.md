@@ -1,15 +1,13 @@
 # Dotfiles – Hyprland
 
 ## Screenshots
-
+![Screenshot](screenshots/1.png)
 <details>
 <summary> Screenshots
 </summary>
 
-![Screenshot](screenshots/1.png)
 ![Screenshot](screenshots/2.png)
 ![Screenshot](screenshots/3.png)
-
 
 </details>
 
