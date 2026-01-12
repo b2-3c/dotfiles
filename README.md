@@ -37,6 +37,7 @@ Below is a **non-exhaustive but required** list of programs needed for everythin
 ### Audio & Microphone
 
 * pipewire
+* pulseaudio
 * pipewire-pulse
 * wireplumber
 * pamixer
