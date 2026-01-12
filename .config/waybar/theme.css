@@ -1,39 +1,94 @@
-@import url("../../.config/current/wal-colors.css");
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 11px;
+    min-height: 0;
+}
 
+@import "theme.css";
 
-/* Map Pywal → Waybar theme */
+window#waybar {
+    background: transparent;
+}
 
-@define-color main-bg       @background;
-@define-color main-fg       @foreground;
-@define-color main-br       @border;
+/* الكبسولات المستقلة لجميع الوحدات */
+#custom-ws,
+#workspaces,
+#idle_inhibitor,
+#clock,
+#custom-wifi,
+#bluetooth,
+#custom-update,
+#custom-media,
+#battery,
+#language,
+#window,
+#pulseaudio,
+#custom-backlight,
+#custom-swaync, 
+#custom-privacydots {
+    background: #1e1e2e;
+    color: @module-fg;
+    padding: 0 10px;
+    margin: 4px 3px;
+    border-radius: 12px;
+}
 
-@define-color active-bg     @selected-text;
-@define-color active-fg     @background;
+/* --- تنسيق مجموعة الموارد (Resource Group) --- */
+#custom-pc { 
+    background: #1e1e2e; 
+    color: @module-fg; 
+    margin: 4px 0 4px 3px; 
+    padding: 0 10px; 
+    border-radius: 12px 0 0 12px; 
+}
+#custom-cpu, #memory, #custom-cpuinfo { 
+    background: #1e1e2e; 
+    color: @module-fg; 
+    margin: 4px 0; 
+    padding: 0 8px; 
+}
+#custom-cpuinfo { 
+    border-radius: 0 12px 12px 0; 
+    padding-right: 12px; 
+}
 
-@define-color hover-bg      @base;
-@define-color hover-fg      @foreground;
+/* --- تنسيق مجموعة درج الأيقونات (Tray Expander) --- */
+#custom-expand-icon { 
+    background: #1e1e2e; 
+    color: #a6adc8;
+    margin: 4px 0; 
+    padding: 0 10px; 
+    border-radius: 12px 0 0 12px; 
+}
+#tray { 
+    background: #1e1e2e; 
+    margin: 4px 0; 
+    padding: 0 10px; 
+}
+#pulseaudio.microphone { 
+    background: #1e1e2e; 
+    color: #a6adc8;
+    margin: 4px 3px 4px 0; 
+    padding: 0 10px; 
+    border-radius: 0 12px 12px 0; 
+}
 
-/* modules */
-@define-color module-fg     @foreground;
-@define-color workspaces   @base;
-@define-color cpuinfo      @base;
-@define-color memory       @background;
-@define-color cpu          @base;
-@define-color distro-bg    @selected-text;
-@define-color distro-fg    @background;
-@define-color time         @base;
-@define-color date         @background;
-@define-color tray         @base;
-@define-color pulseaudio   @base;
-@define-color backlight    @background;
-@define-color battery      @base;
-@define-color power        @selected-text;
+/* تحسينات إضافية */
+#workspaces button { color: #8c91a8; padding: 0 4px; }
+#workspaces button.active { color: #a6e3a1; }
 
-@define-color language     @base;
-@define-color swaync       @base;
+#custom-swaync { color: #f38ba8; }
+#custom-privacydots { color: #f38ba8; }
 
-/* states */
-@define-color warning      #f9e2af;
-@define-color critical     #f38ba8;
-@define-color full         #a6e3a1;
-@define-color charging     @selected-text;
+#workspaces button:hover, #custom-swaync:hover, #pulseaudio:hover, #custom-expand-icon:hover {
+    background: #313244;
+}
+
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border: 1px solid @power;
+}
