@@ -13,7 +13,7 @@ window#waybar {
     background: transparent;
 }
 
-/* توحيد التصميم لجميع الأزرار (بما في ذلك الموارد، الإشعارات، والرام) */
+
 #custom-ws,
 #workspaces,
 #idle_inhibitor,
@@ -34,13 +34,13 @@ window#waybar {
 #memory, 
 #custom-cpuinfo {
     background: #1e1e2e;
-    color: @module-fg; /* اللون الموحد للأيقونات من القالب */
+    color: @module-fg; 
     padding: 0 10px;
     margin: 4px 3px;
     border-radius: 12px;
 }
 
-/* تنسيق مساحات العمل */
+
 #workspaces button {
     color: @module-fg;
     border-radius: 8px;
@@ -61,7 +61,7 @@ window#waybar {
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
 }
 
-/* تنسيق درج الأيقونات والمايكروفون ليصبحوا كبسولات منفصلة */
+
 #custom-expand-icon, #tray, #pulseaudio.microphone {
     background: #1e1e2e;
     color: @module-fg;
@@ -70,7 +70,7 @@ window#waybar {
     border-radius: 12px;
 }
 
-/* إزالة أي ألوان استثنائية للإشعارات لجعلها مثل البقية */
+
 #custom-swaync {
     color: @module-fg;
 }
