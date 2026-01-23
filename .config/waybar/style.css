@@ -16,7 +16,6 @@ window#waybar {
     border-radius: 0; 
 }
 
-
 #custom-ws,
 #workspaces,
 #idle_inhibitor,
@@ -29,13 +28,13 @@ window#waybar {
 #language,
 #window,
 #pulseaudio,
-#custom-backlight,
+#backlight,
 #custom-swaync, 
 #custom-privacydots,
 #custom-pc,
-#custom-cpu, 
+#cpu, 
 #memory, 
-#custom-cpuinfo,
+#temperature,
 #custom-expand-icon, 
 #tray, 
 #pulseaudio.microphone {
@@ -68,4 +67,9 @@ tooltip {
     background: #1e1e2e;
     border-radius: 0;
     border: 1px solid @power;
+}
+
+tooltip label {
+    color: @module-fg;
+    font-family: "JetBrainsMono Nerd Font";
 }
