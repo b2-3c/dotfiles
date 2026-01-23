@@ -5,6 +5,9 @@
   "reload_style_on_change": true,
   "gtk-layer-shell": true,
   "spacing": 0,
+  "margin-top": 5,
+  "margin-left": 10,
+  "margin-right": 10,
 
   "modules-left": [
     "custom/ws",
@@ -33,22 +36,46 @@
     "custom/swaync"
   ],
 
-  "network": {
-    "format-wifi": "",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰖪",
-    "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "nm-connection-editor"
-  },
-
   "hyprland/window": {
     "format": "{}",
     "min-length": 5,
     "rewrite": {
       "": "<span foreground='#89b4fa'> </span> Hyprland",
-      "~": " Terminal",
-      "(.*)Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
-      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> VS Code"
+      "~": "  Terminal",
+      "zsh": "  Terminal",
+      "kitty": "  Terminal",
+      "sejjy@archlinux:(.*)": "  Terminal",
+      "(.*)sejjy@archlinux:~": "  Terminal",
+      "(.*)Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+      "(.*) — Mozilla Firefox": "<span foreground='#f38ba8'>󰈹 </span> $1",
+      "(.*)Zen Browser": "<span foreground='#cdd6f4'>󰈹 </span> Zen Browser",
+      "(.*) — Zen Browser": "<span foreground='#cdd6f4'>󰈹 </span> $1",
+      "(.*) - Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> $1",
+      "(.*)Visual Studio Code": "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+      "Godot": "<span foreground='#89b4fa'> </span> Godot Engine",
+      "Godot Engine - (.*)": "<span foreground='#89b4fa'> </span> $1",
+      "(.*) - Godot Engine": "<span foreground='#89b4fa'> </span> $1",
+      "(.*)Spotify": "<span foreground='#a6e3a1'> </span> Spotify",
+      "(.*)Spotify Premium": "<span foreground='#a6e3a1'> </span> Spotify Premium",
+      "OBS(.*)": "<span foreground='#a6adc8'>󰐌 </span> OBS Studio",
+      "VLC media player": "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+      "(.*) - VLC media player": "<span foreground='#fab387'>󰕼 </span> $1",
+      "GNU Image Manipulation Program": "<span foreground='#a6adc8'> </span> GNU Image Manipulation Program",
+      "qView": "  qView",
+      "(.*).jpg": "  $1.jpg",
+      "(.*).png": "  $1.png",
+      "(.*).svg": "  $1.svg",
+      "vesktop": "<span foreground='#89b4fa'> </span> Discord",
+      "• Discord(.*)": "Discord$1",
+      "(.*)Discord(.*)": "<span foreground='#89b4fa'> </span> $1Discord$2",
+      "ONLYOFFICE Desktop Editors": "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+      "(.*).docx": "<span foreground='#89b4fa'> </span> $1.docx",
+      "(.*).xlsx": "<span foreground='#a6e3a1'> </span> $1.xlsx",
+      "(.*).pptx": "<span foreground='#fab387'> </span> $1.pptx",
+      "(.*).pdf": "<span foreground='#f38ba8'> </span> $1.pdf",
+      "/": "  File Manager",
+      "Timeshift-gtk": "<span foreground='#a6e3a1'> </span> Timeshift",
+      "Authenticate": "  Authenticate"
     }
   },
 
@@ -60,44 +87,22 @@
 
   "group/resource": {
     "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "transition-left-to-right": true,
-      "children-class": "resource-group-item"
-    },
+    "drawer": { "transition-duration": 600, "transition-left-to-right": true, "children-class": "resource-group-item" },
     "modules": ["custom/pc", "custom/cpu", "memory", "custom/cpuinfo"]
   },
 
   "group/tray-expander": {
     "orientation": "horizontal",
-    "drawer": { "transition-duration": 600 },
+    "drawer": { "transition-duration": 600, "children-class": "tray-group-item" },
     "modules": ["custom/expand-icon", "tray", "pulseaudio#microphone"]
   },
 
+  "network": { "format-wifi": "", "format-ethernet": "󰈀", "format-disconnected": "󰖪", "tooltip-format": "{essid}", "on-click": "nm-connection-editor" },
+  "custom/privacydots": { "exec": "~/.config/waybar/scripts/privacy_dots.sh", "return-type": "json", "interval": 3, "format": "{text}", "tooltip": true, "escape": false, "markup": "pango" },
   "custom/expand-icon": { "format": "", "tooltip": false },
   "tray": { "icon-size": 14, "spacing": 10 },
-  "pulseaudio#microphone": {
-    "format": "{format_source}",
-    "format-source": "",
-    "format-source-muted": "",
-    "on-click": "pamixer --default-source -t"
-  },
-
-  "custom/swaync": {
-    "tooltip": true,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": ""
-    },
-    "return-type": "json",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "escape": true
-  },
-
+  "pulseaudio#microphone": { "format": "{format_source}", "format-source": "", "format-source-muted": "", "on-click": "pamixer --default-source -t", "on-scroll-up": "pamixer --default-source -i 5", "on-scroll-down": "pamixer --default-source -d 5", "scroll-step": 5 },
+  "custom/swaync": { "tooltip": true, "format": "{icon}", "format-icons": { "notification": "<span foreground='red'><sup></sup></span>", "none": "", "dnd-notification": "<span foreground='red'><sup></sup></span>", "dnd-none": "" }, "return-type": "json", "exec-if": "which swaync-client", "exec": "swaync-client -swb", "on-click": "sleep 0.1 && swaync-client -t -sw", "on-click-right": "sleep 0.1 && swaync-client -d -sw", "escape": true },
   "custom/pc": { "format": "  ", "tooltip": false },
   "custom/ws": { "format": "  " },
   "custom/cpuinfo": { "exec": "~/.config/waybar/scripts/cpu-temp.sh", "return-type": "json", "format": "{}", "interval": 5 },

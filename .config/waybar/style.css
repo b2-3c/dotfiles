@@ -1,6 +1,6 @@
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 0; 
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 11px;
@@ -10,14 +10,18 @@
 @import "theme.css";
 
 window#waybar {
-    background: transparent;
+    background: #1e1e2e;
+    color: @module-fg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0; 
 }
+
 
 #custom-ws,
 #workspaces,
 #idle_inhibitor,
 #clock,
-#network,       
+#network,
 #bluetooth,
 #custom-update,
 #custom-media,
@@ -31,52 +35,37 @@ window#waybar {
 #custom-pc,
 #custom-cpu, 
 #memory, 
-#custom-cpuinfo {
-    background: #1e1e2e;
+#custom-cpuinfo,
+#custom-expand-icon, 
+#tray, 
+#pulseaudio.microphone {
+    background: transparent;
     color: @module-fg; 
     padding: 0 10px;
-    margin: 4px 3px;
-    border-radius: 12px;
+    margin: 0;
+    border-radius: 0;
 }
 
 #workspaces button {
     color: @module-fg;
-    border-radius: 8px;
-    margin: 2px 0;
-    padding: 0 2px;
-}
-
-#workspaces button:hover {
-    color: @hover-fg;
-    background: @hover-bg;
+    border-radius: 0;
+    margin: 4px 2px;
+    padding: 0 4px;
 }
 
 #workspaces button.active {
     color: @active-fg;
     background: @active-bg;
-    margin: 2px;
-    padding: 0 6px;
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 0;
 }
 
-#custom-expand-icon, #tray, #pulseaudio.microphone {
-    background: #1e1e2e;
-    color: @module-fg;
-    margin: 4px 3px;
-    padding: 0 10px;
-    border-radius: 12px;
-}
-
-#network.disconnected {
-    color: #f38ba8; 
-}
-
-#custom-swaync {
-    color: @module-fg;
+#workspaces button:hover {
+    background: @hover-bg;
+    color: @hover-fg;
 }
 
 tooltip {
     background: #1e1e2e;
-    border-radius: 10px;
+    border-radius: 0;
     border: 1px solid @power;
 }
