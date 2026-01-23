@@ -1,82 +1,79 @@
-/* ربط الملف بألوان Pywal لضمان التناسق التام */
 @import url("../../.config/current/wal-colors.css");
-
-/* تعريف المتغيرات بناءً على ألوان النظام */
-@define-color main-bg    @background;
-@define-color main-fg    @foreground;
-@define-color main-br    @border;
-@define-color accent     @selected-text; /* اللون المميز من خلفيتك */
-@define-color card-bg    rgba(30, 30, 46, 0.9); /* نفس خلفية كبسولات Waybar مع شفافية بسيطة */
 
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 11px; /* مطابق لحجم Waybar */
-    border-radius: 12px !important; /* جعل الزوايا دائرية كباقي النظام */
+    border-radius: 0px;
     box-shadow: none;
 }
 
-/* النافذة الرئيسية */
+/* صلب تماماً - No Transparency */
 .control-center {
-    background: @main-bg;
-    border: 2px solid @main-br;
-    margin: 10px;
+    background: @background;
+    color: @foreground;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-row .notification {
+    background: @background;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: @foreground;
+}
+
+/* حل مشكلة زر Do Not Disturb */
+.widget-dnd {
+    background: @background;
     padding: 10px;
-}
-
-/* التنبيهات الفردية */
-.notification {
-    background: @card-bg;
-    color: @main-fg;
-    border: 1px solid @main-br;
-    margin: 8px;
-    padding: 10px;
-}
-
-.notification:hover {
-    background: @main-br;
-}
-
-/* شبكة الأزرار (الصوت، السطوع، إلخ) */
-.widget-buttons-grid {
-    padding: 8px;
     margin: 5px;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button {
-    background: @card-bg;
-    color: @main-fg;
-    border: 1px solid @main-br;
+.widget-dnd switch {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.widget-dnd switch:checked {
+    background: @selected-text; /* يتغير لهذا اللون عند التفعيل */
+}
+
+.widget-dnd switch slider {
+    background: @foreground;
+}
+
+/* الأزرار في الشبكة */
+.widget-buttons-grid button {
+    background: @background;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: @foreground;
     margin: 5px;
-    padding: 10px;
 }
 
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
-    background: @accent;
-    color: @main-bg;
+.widget-buttons-grid button:hover {
+    background: @selected-text;
+    color: @background;
 }
 
-/* مشغل الموسيقى (MPRIS) */
-.widget-mpris {
-    background: @card-bg;
-    color: @main-fg;
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid @main-br;
+.widget-buttons-grid button.toggle:checked {
+    background: @selected-text;
+    color: @background;
 }
 
-/* أزرار مسح التنبيهات */
-.widget-title > button {
-    background: @accent;
-    color: @main-bg;
-    padding: 5px 10px;
-}
-
-/* شريط التمرير */
+/* أشرطة الصوت والسطوع */
 trough {
-    background: @main-bg;
+    background: rgba(255, 255, 255, 0.1); /* الجزء غير الممتلئ */
+    min-height: 12px;
 }
 
 highlight {
-    background: @accent;
+    background: @selected-text; /* الجزء الممتلئ */
+}
+
+/* مشغل الوسائط */
+.widget-mpris {
+    background: @background;
+    color: @foreground;
+}
+
+.widget-mpris-title {
+    color: @selected-text;
 }
