@@ -153,6 +153,53 @@ mkdir -p ~/Wallpapers/Pictures   # Put image wallpapers here
 mkdir -p ~/Wallpapers/Videos     # Put mp4 wallpapers here
 ```
 ---
+## ⌨️ Keyboard Shortcuts ($mainMod = SUPER)
+
+### 📸 Screenshots & Recording
+* `Print` : Capture area to clipboard (grim + slurp)
+* `Shift + Print` : Capture full screen to clipboard
+* `$mainMod + Print` : Save area screenshot to `~/Pictures/Screenshots`
+* `$mainMod + Shift + Print` : Save full screen to `~/Pictures/Screenshots`
+* `$mainMod + R` : Toggle screen recording script
+
+### 🚀 Applications
+* `$mainMod + Return` : Open Terminal (**Kitty**)
+* `$mainMod + B` : Launch **Firefox**
+* `$mainMod + F` : Launch **Nautilus** (File Manager)
+* `$mainMod + Space` : App Launcher (**Wofi**)
+* `$mainMod + N` : Launch **Neovim**
+
+### 🛠 Terminal Tools (Floating)
+* `$mainMod + Q` : System info (**Fastfetch**)
+* `$mainMod + T` : System monitor (**Btop**)
+* `$mainMod + L` : Git interface (**Lazygit**)
+* `$mainMod + U` : Matrix effect (**Unimatrix**)
+
+### 🪟 Window Management
+* `$mainMod + W` : Kill active window
+* `$mainMod + V` : Toggle floating mode
+* `$mainMod + J` : Toggle split
+* `$mainMod + M` : Fullscreen toggle
+* `Alt + Tab` : Cycle next window
+* `$mainMod + Arrows` : Resize active window
+* `$mainMod + Shift + Arrows` : Move window position
+
+### 🌌 Workspaces
+* `$mainMod + [0-9]` : Switch to workspace 1-10
+* `$mainMod + Shift + [0-9]` : Move window to workspace 1-10
+* `$mainMod + Mouse_Scroll` : Cycle through workspaces
+* **Special Workspaces:**
+    * `AltGr + ,` : Toggle Calculator
+    * `$mainMod + Y` : Toggle Spotify
+    * `$mainMod + H` : Toggle Magic workspace
+
+### 🔉 Audio & Brightness
+* `Ctrl + Shift + Up/Down` : Screen brightness +/-
+* `XF86AudioRaiseVolume` : Volume up
+* `XF86AudioLowerVolume` : Volume down
+* `XF86AudioMute` : Mute audio
+* `XF86AudioMicMute` : Mute microphone
+* `Media Keys` : Play/Pause/Next/Prev via `playerctl`
 
 ## ❗ Important Notes
 
