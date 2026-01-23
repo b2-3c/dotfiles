@@ -31,14 +31,16 @@
     "bluetooth",
     "custom/update",
     "battery",
+    "backlight",
     "pulseaudio",
-    "custom/backlight",
     "custom/swaync"
   ],
 
   "hyprland/window": {
     "format": "{}",
     "min-length": 5,
+    "separate-outputs": true,
+    "tooltip": false,
     "rewrite": {
       "": "<span foreground='#89b4fa'> </span> Hyprland",
       "~": "  Terminal",
@@ -82,13 +84,13 @@
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace -1",
     "on-scroll-down": "hyprctl dispatch workspace +1",
-    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [], "5": [] }
+    "persistent-workspaces": { "1": [], "2": [], "3": [], "4": [] }
   },
 
   "group/resource": {
     "orientation": "horizontal",
     "drawer": { "transition-duration": 600, "transition-left-to-right": true, "children-class": "resource-group-item" },
-    "modules": ["custom/pc", "custom/cpu", "memory", "custom/cpuinfo"]
+    "modules": ["custom/pc", "cpu", "memory", "temperature"]
   },
 
   "group/tray-expander": {
@@ -97,7 +99,15 @@
     "modules": ["custom/expand-icon", "tray", "pulseaudio#microphone"]
   },
 
-  "network": { "format-wifi": "", "format-ethernet": "󰈀", "format-disconnected": "󰖪", "tooltip-format": "{essid}", "on-click": "nm-connection-editor" },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "nm-connection-editor"
+  },
+
   "custom/privacydots": { "exec": "~/.config/waybar/scripts/privacy_dots.sh", "return-type": "json", "interval": 3, "format": "{text}", "tooltip": true, "escape": false, "markup": "pango" },
   "custom/expand-icon": { "format": "", "tooltip": false },
   "tray": { "icon-size": 14, "spacing": 10 },
@@ -105,17 +115,36 @@
   "custom/swaync": { "tooltip": true, "format": "{icon}", "format-icons": { "notification": "<span foreground='red'><sup></sup></span>", "none": "", "dnd-notification": "<span foreground='red'><sup></sup></span>", "dnd-none": "" }, "return-type": "json", "exec-if": "which swaync-client", "exec": "swaync-client -swb", "on-click": "sleep 0.1 && swaync-client -t -sw", "on-click-right": "sleep 0.1 && swaync-client -d -sw", "escape": true },
   "custom/pc": { "format": "  ", "tooltip": false },
   "custom/ws": { "format": "  " },
-  "custom/cpuinfo": { "exec": "~/.config/waybar/scripts/cpu-temp.sh", "return-type": "json", "format": "{}", "interval": 5 },
+  "cpu": { "interval": 5, "format": "  {usage}%" },
+  "temperature": { "critical-threshold": 80, "format": " {temperatureC}°C" },
   "memory": { "format": "󰘚 {percentage}%", "interval": 5 },
-  "custom/cpu": { "exec": "~/.config/waybar/scripts/cpu-usage.sh", "return-type": "json", "interval": 5 },
   "idle_inhibitor": { "format": " " },
-  "clock#time": { "format": "󱑂 {:%I:%M %p}" },
-  "clock#date": { "format": "󰨳 {:%m-%d}" },
+  "clock#time": { "format": "󱑂 {:%I:%M %p}", "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>" },
+  "clock#date": { "format": "󰨳 {:%m-%d}", "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>" },
   "bluetooth": { "format": "󰂰" },
   "custom/update": { "exec": "~/.config/waybar/scripts/system-update.sh", "return-type": "json" },
   "custom/media": { "exec": "~/.config/waybar/scripts/media-player.py", "return-type": "json" },
-  "pulseaudio": { "format": "{icon}", "on-click": "pavucontrol", "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] } },
-  "custom/backlight": { "exec": "~/.config/waybar/scripts/brightness-control.sh", "return-type": "json", "format": "{}" },
+  
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "on-click": "pavucontrol",
+    "on-scroll-up": "pamixer -i 5",
+    "on-scroll-down": "pamixer -d 5",
+    "scroll-step": 5,
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "tooltip-format": "Sound: {volume}%"
+  },
+  
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl set 5%+",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip-format": "Brightness: {percent}%"
+  },
+
   "battery": { "format": "{icon} {capacity}%", "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"] },
   "hyprland/language": { "format": "{}", "format-en": "EN", "format-ar": "AR" }
 }
