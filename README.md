@@ -200,7 +200,7 @@ mkdir -p ~/Wallpapers/Videos     # Put mp4 wallpapers here
 * `XF86AudioMute` : Mute audio
 * `XF86AudioMicMute` : Mute microphone
 * `Media Keys` : Play/Pause/Next/Prev via `playerctl`
-
+---
 ## ❗ Important Notes
 
 * **Back up your system before copying anything**
