@@ -1,0 +1,90 @@
+/* ألوان مستوحاة من ملف البار الخاص بك */
+@define-color main-bg #11111b;    /* اللون الأساسي الخلفية */
+@define-color main-fg #cdd6f4;    /* لون النص الأساسي */
+@define-color accent  #f5e0dc;    /* لون التمييز (module-fg) */
+@define-color hover   #313244;    /* لون التحويم */
+@define-color active  #9399b2;    /* اللون النشط */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+/* صلب تماماً - No Transparency */
+.control-center {
+    background: @main-bg;
+    color: @main-fg;
+    border: 1px solid @active;
+}
+
+.notification-row .notification {
+    background: @main-bg;
+    border: 1px solid rgba(147, 153, 178, 0.3); /* استخدام active color للحدود */
+    color: @main-fg;
+    margin: 5px;
+}
+
+/* Do Not Disturb Widget */
+.widget-dnd {
+    background: @main-bg;
+    padding: 10px;
+    margin: 5px;
+}
+
+.widget-dnd switch {
+    background: @hover;
+    border: 1px solid @active;
+}
+
+.widget-dnd switch:checked {
+    background: @accent; 
+}
+
+.widget-dnd switch slider {
+    background: @main-bg;
+}
+
+/* أزرار الشبكة - Buttons Grid */
+.widget-buttons-grid button {
+    background: @hover;
+    border: 1px solid rgba(205, 214, 244, 0.1);
+    color: @main-fg;
+    margin: 5px;
+}
+
+.widget-buttons-grid button:hover {
+    background: @active;
+    color: @main-bg;
+}
+
+.widget-buttons-grid button.toggle:checked {
+    background: @accent;
+    color: @main-bg;
+}
+
+/* أشرطة التحكم (الصوت والسطوع) */
+trough {
+    background: @hover;
+    min-height: 12px;
+}
+
+highlight {
+    background: @accent; 
+}
+
+/* مشغل الوسائط - MPRIS */
+.widget-mpris {
+    background: @main-bg;
+    color: @main-fg;
+    border: 1px solid @hover;
+}
+
+.widget-mpris-title {
+    color: @accent;
+}
+
+.widget-mpris-subtitle {
+    color: @active;
+}

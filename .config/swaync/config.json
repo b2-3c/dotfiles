@@ -1,0 +1,87 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "ignore-gtk-theme": true,
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-margin-top": 5,
+  "control-center-margin-bottom": 5,
+  "control-center-margin-right": 10,
+  "control-center-margin-left": 10,
+  "notification-window-width": 400,
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": true,
+  "text-empty": "No Notifications",
+  "control-center-width": 350,
+  "widgets": [
+    "buttons-grid",
+    "volume",
+    "backlight",
+    "mpris",
+    "title",
+    "notifications",
+    "dnd"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟 Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "mpris": {
+      "autohide": true,
+      "show-album-art": "always"
+    },
+    "buttons-grid": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c '~/.config/swaync/scripts/toggle_wifi.sh'",
+          "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
+        },
+        {
+          "label": "󰂯",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c '~/.config/swaync/scripts/toggle_bluetooth.sh'",
+          "update-command": "sh -c 'set +e;bluetoothctl show | grep -qF Powered:\\ yes && echo true || echo false'"
+        },
+        {
+          "label": "󰀝",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "command": "pamixer -t",
+          "update-command": "sh -c 'set +e;pactl get-sink-mute @DEFAULT_SINK@ | grep -q \"no\" && echo true || echo false'"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_darkmode.sh'"
+        },
+        {
+          "label": "",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_hypridle.sh'"
+        }
+      ]
+    },
+    "volume": {
+      "label": "",
+      "show-per-app": true
+    },
+    "backlight": {
+      "label": "󰃠"
+    }
+  }
+}
