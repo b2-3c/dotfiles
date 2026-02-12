@@ -29,59 +29,20 @@
       "clear-all-button": true,
       "button-text": "󰎟 Clear All"
     },
-    "dnd": {
-      "text": "Do Not Disturb"
-    },
-    "mpris": {
-      "autohide": true,
-      "show-album-art": "always"
-    },
+    "dnd": { "text": "Do Not Disturb" },
+    "mpris": { "autohide": true, "show-album-art": "always" },
     "buttons-grid": {
       "buttons-per-row": 3,
       "actions": [
-        {
-          "label": "",
-          "type": "toggle",
-          "active": true,
-          "command": "sh -c '~/.config/swaync/scripts/toggle_wifi.sh'",
-          "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
-        },
-        {
-          "label": "󰂯",
-          "type": "toggle",
-          "active": true,
-          "command": "sh -c '~/.config/swaync/scripts/toggle_bluetooth.sh'",
-          "update-command": "sh -c 'set +e;bluetoothctl show | grep -qF Powered:\\ yes && echo true || echo false'"
-        },
-        {
-          "label": "󰀝",
-          "type": "toggle",
-          "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'"
-        },
-        {
-          "label": "",
-          "type": "toggle",
-          "command": "pamixer -t",
-          "update-command": "sh -c 'set +e;pactl get-sink-mute @DEFAULT_SINK@ | grep -q \"no\" && echo true || echo false'"
-        },
-        {
-          "label": "",
-          "type": "toggle",
-          "command": "sh -c '~/.config/swaync/scripts/toggle_darkmode.sh'"
-        },
-        {
-          "label": "",
-          "type": "toggle",
-          "command": "sh -c '~/.config/swaync/scripts/toggle_hypridle.sh'"
-        }
+        { "label": "", "type": "toggle", "active": true, "command": "sh -c '~/.config/swaync/scripts/toggle_wifi.sh'", "update-command": "sh -c 'set +e;[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'" },
+        { "label": "󰂯", "type": "toggle", "active": true, "command": "sh -c '~/.config/swaync/scripts/toggle_bluetooth.sh'", "update-command": "sh -c 'set +e;bluetoothctl show | grep -qF Powered:\\ yes && echo true || echo false'" },
+        { "label": "󰀝", "type": "toggle", "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'" },
+        { "label": "", "type": "toggle", "command": "pamixer -t", "update-command": "sh -c 'set +e;pactl get-sink-mute @DEFAULT_SINK@ | grep -q \"no\" && echo true || echo false'" },
+        { "label": "", "type": "toggle", "command": "sh -c '~/.config/swaync/scripts/toggle_darkmode.sh'" },
+        { "label": "", "type": "toggle", "command": "sh -c '~/.config/swaync/scripts/toggle_hypridle.sh'" }
       ]
     },
-    "volume": {
-      "label": "",
-      "show-per-app": true
-    },
-    "backlight": {
-      "label": "󰃠"
-    }
+    "volume": { "label": "", "show-per-app": true },
+    "backlight": { "label": "󰃠" }
   }
 }

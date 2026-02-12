@@ -1,90 +1,69 @@
-/* ألوان مستوحاة من ملف البار الخاص بك */
-@define-color main-bg #11111b;    /* اللون الأساسي الخلفية */
-@define-color main-fg #cdd6f4;    /* لون النص الأساسي */
-@define-color accent  #f5e0dc;    /* لون التمييز (module-fg) */
-@define-color hover   #313244;    /* لون التحويم */
-@define-color active  #9399b2;    /* اللون النشط */
+/* استدعاء السمة المطلوبة */
+@import "themes/catppuccin-latte.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    border-radius: 0px;
-    box-shadow: none;
+    /* جعل كل شيء حاد الحواف افتراضياً */
+    border-radius: 0px !important; 
 }
 
-/* صلب تماماً - No Transparency */
+/* مركز التحكم الرئيسي */
 .control-center {
     background: @main-bg;
     color: @main-fg;
-    border: 1px solid @active;
+    border: 2px solid @border;
+    border-radius: 0px; /* حواف حادة */
+    margin: 10px;
 }
 
+/* التنبيهات الفردية */
 .notification-row .notification {
-    background: @main-bg;
-    border: 1px solid rgba(147, 153, 178, 0.3); /* استخدام active color للحدود */
-    color: @main-fg;
-    margin: 5px;
-}
-
-/* Do Not Disturb Widget */
-.widget-dnd {
-    background: @main-bg;
-    padding: 10px;
-    margin: 5px;
-}
-
-.widget-dnd switch {
     background: @hover;
     border: 1px solid @active;
+    color: @main-fg;
+    border-radius: 0px; /* حواف حادة */
+    margin: 8px;
+    padding: 10px;
 }
 
-.widget-dnd switch:checked {
-    background: @accent; 
-}
-
-.widget-dnd switch slider {
-    background: @main-bg;
-}
-
-/* أزرار الشبكة - Buttons Grid */
+/* أزرار الشبكة (Quick Settings) */
 .widget-buttons-grid button {
     background: @hover;
-    border: 1px solid rgba(205, 214, 244, 0.1);
+    border: 1px solid @active;
     color: @main-fg;
     margin: 5px;
+    border-radius: 0px; /* حواف حادة */
 }
 
-.widget-buttons-grid button:hover {
-    background: @active;
-    color: @main-bg;
-}
-
-.widget-buttons-grid button.toggle:checked {
-    background: @accent;
-    color: @main-bg;
-}
-
-/* أشرطة التحكم (الصوت والسطوع) */
+/* أشرطة التحكم */
 trough {
     background: @hover;
-    min-height: 12px;
+    min-height: 10px;
+    border-radius: 0px; /* حواف حادة */
 }
 
 highlight {
-    background: @accent; 
+    background: @accent;
+    border-radius: 0px; /* حواف حادة */
 }
 
-/* مشغل الوسائط - MPRIS */
+/* مشغل الوسائط */
 .widget-mpris {
-    background: @main-bg;
-    color: @main-fg;
-    border: 1px solid @hover;
+    background: @hover;
+    border-radius: 0px; /* حواف حادة */
 }
 
-.widget-mpris-title {
-    color: @accent;
+/* زر عدم الإزعاج */
+.widget-dnd {
+    background: @hover;
+    border-radius: 0px; /* حواف حادة */
 }
 
-.widget-mpris-subtitle {
-    color: @active;
+.widget-dnd switch {
+    border-radius: 0px; /* حواف حادة لمفتاح التبديل */
+}
+
+.widget-dnd switch slider {
+    border-radius: 0px; /* حواف حادة للمنلق داخل المفتاح */
 }
