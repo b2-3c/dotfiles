@@ -1,5 +1,5 @@
 /* استدعاء السمة المطلوبة */
-@import "themes/catppuccin-latte.css";
+@import "theme.css";
 
 * {
     font-family: "JetBrainsMono Nerd Font";
