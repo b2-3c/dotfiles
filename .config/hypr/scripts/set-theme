@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# --- إعدادات الواجهة والألوان ---
+BG_MAIN='\033[48;5;93m' 
+FG_TEXT='\033[38;5;255m' 
+BOLD='\033[1m'
+CYAN='\033[38;5;51m'
+GREEN='\033[38;5;82m'
+GRAY='\033[38;5;244m'
+RESET='\033[0m'
+
+# --- تعريف المسارات ---
+USER_HOME="/home/ahmed"
+HYPR_SCRIPTS="$USER_HOME/.config/hypr/scripts"
+WAYBAR_DIR="$USER_HOME/.config/waybar"
+SWAYNC_DIR="$USER_HOME/.config/swaync"
+KITTY_DIR="$USER_HOME/.config/kitty"
+ROFI_DIR="$USER_HOME/.config/rofi"
+BTOP_THEMES_DIR="$USER_HOME/.config/btop/themes"
+
+# --- قائمة الثيمات المتوفرة ---
+themes=("catppuccin-frappe" "catppuccin-latte" "catppuccin-macchiato" "catppuccin-mocha")
+selected=0
+
+# دالة شريط التحميل
+progress_bar() {
+    echo -ne "      ${GRAY}["
+    for i in {1..20}; do
+        sleep 0.005
+        echo -ne "${GREEN}#${RESET}"
+    done
+    echo -e "${GRAY}]${RESET} ${GREEN} Done!${RESET}"
+}
+
+# دالة رسم القائمة
+draw_menu() {
+    clear
+    echo -e "${BG_MAIN}${FG_TEXT}${BOLD}  󱄅 HYPRLAND THEME MANAGER  ${RESET}"
+    echo -e "${GRAY}  Script: ~/.config/hypr/scripts/set-theme${RESET}"
+    echo -e "${GRAY}  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n"
+
+    for i in "${!themes[@]}"; do
+        if [ $i -eq $selected ]; then
+            echo -e "  ${CYAN}${BOLD}➜  ${FG_TEXT}${themes[$i]}${RESET}  ${GREEN}󰄬${RESET}"
+        else
+            echo -e "     ${GRAY}${themes[$i]}${RESET}"
+        fi
+    done
+    echo -e "\n${GRAY}  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+    echo -e "  ${BOLD}${GRAY}Use ↑↓ to navigate • Enter to apply • q to quit${RESET}"
+}
+
+# حلقة التحكم
+while true; do
+    draw_menu
+    read -rsn3 key
+    case "$key" in
+        $'\x1b[A') ((selected--)); [ $selected -lt 0 ] && selected=$((${#themes[@]} - 1)) ;;
+        $'\x1b[B') ((selected++)); [ $selected -ge ${#themes[@]} ] && selected=0 ;;
+        "q") exit ;;
+        "") break ;;
+    esac
+done
+
+# --- التنفيذ ---
+THEME="${themes[$selected]}"
+BTOP_THEME_FILE=$(echo "$THEME" | tr '-' '_')
+
+clear
+echo -e "${BG_MAIN}${FG_TEXT}${BOLD}  󰚚 DEPLOYING CATPPUCCIN: ${THEME}  ${RESET}\n"
+
+deploy() {
+    local name=$1
+    local src=$2
+    local dest=$3
+    local reload_cmd=$4
+
+    echo -e "${BOLD}${CYAN}  󱃯  Updating $name...${RESET}"
+    if [ -f "$src" ]; then
+        cp "$src" "$dest"
+        [ -n "$reload_cmd" ] && eval "$reload_cmd"
+        progress_bar
+    else
+        echo -e "     ${BOLD}${GRAY}󰅙 Skipping: Source not found${RESET}"
+    fi
+    echo ""
+}
+
+# التنفيذ لكل التطبيقات
+deploy "Waybar" "$WAYBAR_DIR/themes/$THEME.css" "$WAYBAR_DIR/theme.css" "pkill -USR2 waybar"
+deploy "SwayNC" "$SWAYNC_DIR/themes/$THEME.css" "$SWAYNC_DIR/theme.css" "swaync-client -rs"
+deploy "Kitty " "$KITTY_DIR/themes/$THEME.conf" "$KITTY_DIR/theme.conf" "kill -SIGUSR1 \$(pgrep kitty) 2>/dev/null"
+deploy "Rofi  " "$ROFI_DIR/themes/$THEME.rasi" "$ROFI_DIR/theme.rasi" ""
+deploy "btop  " "$BTOP_THEMES_DIR/$BTOP_THEME_FILE.theme" "$BTOP_THEMES_DIR/theme.theme" ""
+
+# إشعار Hyprland
+notify-send "🎨 Hyprland Theme" "Applied: $THEME" --icon=preferences-desktop-theme
+
+echo -e "${BOLD}${GREEN}  󰄬 SUCCESS: ${FG_TEXT}Theme updated successfully!${RESET}\n"
