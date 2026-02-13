@@ -16,7 +16,7 @@ window {
 	width:                  375px;
 	height:                 138px;
 	border:                 4px;
-	border-radius:          12px;
+	border-radius:          0px;
 	border-color:           @main-br;
 	background-color:       @main-bg;
 	children:               [ mainbox ];
@@ -43,7 +43,7 @@ textbox-custom {
 
 message {
 	border:                 2px 0 0;
-	border-radius:          10px;
+	border-radius:          0px;
 	border-color:           @main-br;
 	cycle:                  false;
 	margin:                 0 0 -4px;
@@ -64,7 +64,7 @@ textbox {
 
 inputbar {
 	margin:                 -40px 8px 8px;
-	border-radius:          8px;
+	border-radius:          0px;
 	spacing:                inherit;
 	background-color:       @input-bg;
 	text-color:             inherit;

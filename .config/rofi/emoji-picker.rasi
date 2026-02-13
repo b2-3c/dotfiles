@@ -12,7 +12,7 @@ configuration {
 window {
 	width:                  375px;
 	border:                 4px;
-	border-radius:          12px;
+	border-radius:          0px;
 	border-color:           @main-br;
 	background-color:       @main-bg;
 	children:               [ mainbox ];
@@ -40,7 +40,7 @@ textbox-custom {
 
 listview {
 	border:                 2px 0 0;
-	border-radius:          10px;
+	border-radius:          0px;
 	border-color:           @main-br;
 	lines:                  5;
 	columns:                5;
@@ -61,7 +61,7 @@ element {
 
 element selected active,
 element selected normal {
-	border-radius:          8px;
+	border-radius:          0px;
 	background-color:       @select-bg;
 	text-color:             @select-fg;
 }
@@ -78,7 +78,7 @@ element-text {
 
 inputbar {
 	margin:                 -40px 8px 8px;
-	border-radius:          8px;
+	border-radius:          0px;
 	spacing:                inherit;
 	background-color:       @input-bg;
 	text-color:             inherit;
