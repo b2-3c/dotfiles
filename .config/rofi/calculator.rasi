@@ -1,0 +1,80 @@
+/* calculator */
+
+@theme "~/.config/rofi/theme.rasi"
+
+configuration {
+	font:                   "Commit Mono Nerd Font 12";
+	calc-display-format:    "{name}";
+}
+
+/* window */
+
+window {
+	location:               south east;
+	x-offset:               -8px;
+	y-offset:               -8px;
+	width:                  375px;
+	height:                 138px;
+	border:                 4px;
+	border-radius:          0px;
+	border-color:           @main-br;
+	background-color:       @main-bg;
+	children:               [ mainbox ];
+}
+
+mainbox {
+	spacing:                0;
+	background-color:       @main-br;
+	text-color:             @main-fg;
+	children:               [ textbox-custom, message, inputbar ];
+}
+
+textbox-custom {
+	font:                   "Commit Mono Nerd Font Bold 12";
+	horizontal-align:       0.5;
+	padding:                2px 0;
+	background-color:       @select-bg;
+	text-color:             @select-fg;
+	expand:                 false;
+	content:                "󰃬 Calculator";
+}
+
+/* output */
+
+message {
+	border:                 2px 0 0;
+	border-radius:          0px;
+	border-color:           @main-br;
+	cycle:                  false;
+	margin:                 0 0 -4px;
+	padding:                8px 8px 56px;
+	background-color:       @main-bg;
+	text-color:             @main-fg;
+}
+
+textbox {
+	font:                   "Commit Mono Nerd Font 18";
+	horizontal-align:       1;
+	padding:                8px;
+	background-color:       inherit;
+	text-color:             @main-fg;
+}
+
+/* input */
+
+inputbar {
+	margin:                 -40px 8px 8px;
+	border-radius:          0px;
+	spacing:                inherit;
+	background-color:       @input-bg;
+	text-color:             inherit;
+	children:               [ entry ];
+}
+
+entry {
+	horizontal-align:       1;
+	padding:                8px 12px;
+	cursor:                 text;
+	background-color:       inherit;
+	text-color:             inherit;
+}

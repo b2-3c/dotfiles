@@ -1,0 +1,9 @@
+/* Catppuccin Mocha for SwayNC */
+@define-color main-bg    #11111b;    /* crust        */
+@define-color main-fg    #cdd6f4;    /* text         */
+@define-color accent     #b4befe;    /* lavender     */
+@define-color accent-bg  #1e1e2e;    /* base — خلفية الأزرار المفعّلة */
+@define-color hover      #313244;    /* surface0     */
+@define-color active     #585b70;    /* surface2     */
+@define-color border     #6c7086;    /* overlay0     */
+@define-color inactive-fg #585b70;   /* surface2 — نص الأزرار الغير مفعّلة */

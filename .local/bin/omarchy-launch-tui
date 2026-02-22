@@ -1,0 +1,4 @@
+#!/bin/bash
+# Launch a TUI app in kitty terminal with a given app ID for window tracking.
+# Usage: omarchy-launch-tui <command> [args...]
+exec kitty --class "${OMARCHY_APP_ID:-org.omarchy.tui}" -- "$@"

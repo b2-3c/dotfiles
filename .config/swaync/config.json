@@ -1,0 +1,99 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "ignore-gtk-theme": true,
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "control-center-margin-top": 5,
+  "control-center-margin-bottom": 5,
+  "control-center-margin-right": 10,
+  "control-center-margin-left": 10,
+  "notification-window-width": 400,
+  "transition-time": 200,
+  "hide-on-clear": false,
+  "hide-on-action": false,
+  "text-empty": "No Notifications",
+  "control-center-width": 350,
+  "widgets": [
+    "buttons-grid",
+    "volume",
+    "backlight",
+    "title",
+    "notifications"
+  ],
+  "widget-config": {
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟 Clear All"
+    },
+    "buttons-grid": {
+      "buttons-per-row": 4,
+      "actions": [
+        {
+          "label": "󰤨",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c 'swaync-client -t; nohup bash ~/.config/rofi/scripts/network-menu.sh &>/dev/null &'",
+          "update-command": "sh -c 'set +e; [[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'",
+          "command2": "sh -c 'nmcli radio wifi off; sleep 0.3; swaync-client --reload-css'"
+        },
+        {
+          "label": "󰂯",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c 'swaync-client -t; nohup bash ~/.config/rofi/scripts/bluetooth-menu.sh &>/dev/null &'",
+          "update-command": "sh -c 'set +e; bluetoothctl show | grep -qF \"Powered: yes\" && echo true || echo false'",
+          "command2": "sh -c 'bluetoothctl power off; sleep 0.3; swaync-client --reload-css'"
+        },
+        {
+          "label": "󰀝",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_airplanemode.sh'",
+          "update-command": "sh -c 'set +e; [[ $(nmcli radio all) == *disabled* ]] && echo true || echo false'"
+        },
+        {
+          "label": "󰂛",
+          "type": "toggle",
+          "command": "sh -c 'swaync-client -d'",
+          "update-command": "sh -c 'swaync-client --get-dnd | grep -q true && echo true || echo false'"
+        },
+        {
+          "label": "󰕾",
+          "type": "toggle",
+          "command": "sh -c 'swaync-client -t; nohup omarchy-launch-audio &>/dev/null &'",
+          "update-command": "sh -c 'set +e; pactl get-sink-mute @DEFAULT_SINK@ | grep -q \"no\" && echo true || echo false'",
+          "command2": "sh -c 'pamixer -t'"
+        },
+        {
+          "label": "󰔎",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_darkmode.sh'",
+          "command2": "sh -c 'gsettings set org.gnome.desktop.interface gtk-theme Adwaita 2>/dev/null; ~/.config/swaync/scripts/toggle_darkmode.sh'"
+        },
+        {
+          "label": "󰒳",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_hypridle.sh'",
+          "update-command": "sh -c 'pgrep hypridle &>/dev/null && echo true || echo false'",
+          "command2": "sh -c 'pkill hypridle || true'"
+        },
+        {
+          "label": "󰁹",
+          "type": "toggle",
+          "command": "sh -c '~/.config/swaync/scripts/toggle_battery_mode.sh && swaync-client --reload-css'",
+          "update-command": "sh -c '~/.config/swaync/scripts/get_battery_mode.sh'"
+        }
+      ],
+      "interval": 2
+    },
+    "volume": {
+      "label": "",
+      "show-per-app": true
+    },
+    "backlight": {
+      "label": "󰃠",
+      "device": "acpi_video0"
+    }
+  }
+}

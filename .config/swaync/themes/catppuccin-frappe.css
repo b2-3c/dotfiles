@@ -1,0 +1,9 @@
+/* Catppuccin Frappe for SwayNC */
+@define-color main-bg    #232634;    /* crust        */
+@define-color main-fg    #c6d0f5;    /* text         */
+@define-color accent     #babbf1;    /* lavender     */
+@define-color accent-bg  #303446;    /* base         */
+@define-color hover      #414559;    /* surface0     */
+@define-color active     #626880;    /* surface2     */
+@define-color border     #737994;    /* overlay0     */
+@define-color inactive-fg #626880;   /* surface2     */

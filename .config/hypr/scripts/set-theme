@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+BG='\033[48;5;93m'
+FG='\033[38;5;255m'
+BD='\033[1m'
+CY='\033[38;5;51m'
+GR='\033[38;5;82m'
+DM='\033[38;5;244m'
+RS='\033[0m'
+
+WB="$HOME/.config/waybar"
+SN="$HOME/.config/swaync"
+KT="$HOME/.config/kitty"
+RF="$HOME/.config/rofi"
+BT="$HOME/.config/btop/themes"
+
+themes=("catppuccin-frappe" "catppuccin-latte" "catppuccin-macchiato" "catppuccin-mocha")
+selected=0
+
+draw_menu() {
+    clear
+    echo -e "${BG}${FG}${BD}  󱄅 HYPRLAND THEME MANAGER  ${RS}"
+    echo -e "${DM}  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RS}\n"
+    for i in "${!themes[@]}"; do
+        if [ $i -eq $selected ]; then
+            echo -e "  ${CY}${BD}➜  ${FG}${themes[$i]}${RS}  ${GR}󰄬${RS}"
+        else
+            echo -e "     ${DM}${themes[$i]}${RS}"
+        fi
+    done
+    echo -e "\n${DM}  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RS}"
+    echo -e "  ${BD}${DM}↑↓ navigate • Enter apply • q quit${RS}"
+}
+
+apply_theme() {
+    local THEME="$1"
+    local BT_THEME="${THEME//-/_}"
+
+    [ -f "$WB/themes/$THEME.css" ]   && cp "$WB/themes/$THEME.css"   "$WB/theme.css"   &
+    [ -f "$SN/themes/$THEME.css" ]   && cp "$SN/themes/$THEME.css"   "$SN/theme.css"   &
+    [ -f "$KT/themes/$THEME.conf" ]  && cp "$KT/themes/$THEME.conf"  "$KT/theme.conf"  &
+    [ -f "$RF/themes/$THEME.rasi" ]  && cp "$RF/themes/$THEME.rasi"  "$RF/theme.rasi"  &
+    [ -f "$BT/$BT_THEME.theme" ]     && cp "$BT/$BT_THEME.theme"     "$BT/theme.theme" &
+    wait
+
+    pkill -USR2 waybar 2>/dev/null &
+    pgrep -x kitty | xargs -I{} kill -SIGUSR1 {} 2>/dev/null &
+    { pkill swaync 2>/dev/null; sleep 0.2; setsid -f swaync; } &>/dev/null &
+    wait
+
+    notify-send "󰒓 Theme" "$THEME" --icon=preferences-desktop-theme
+}
+
+if [ -n "$1" ]; then
+    apply_theme "$1"
+    exit 0
+fi
+
+while true; do
+    draw_menu
+    read -rsn3 key
+    case "$key" in
+        $'\x1b[A') ((selected--)); [ $selected -lt 0 ] && selected=$((${#themes[@]} - 1)) ;;
+        $'\x1b[B') ((selected++)); [ $selected -ge ${#themes[@]} ] && selected=0 ;;
+        "q") exit ;;
+        "") break ;;
+    esac
+done
+
+clear
+echo -e "${BG}${FG}${BD}  󰚚 APPLYING: ${themes[$selected]}  ${RS}\n"
+apply_theme "${themes[$selected]}"
+echo -e "${GR}${BD}  󰄬 Done!${RS}\n"

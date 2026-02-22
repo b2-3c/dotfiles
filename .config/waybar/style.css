@@ -1,0 +1,173 @@
+/* استدعاء السمة المطلوبة */
+@import "theme.css";
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: JetBrainsMono Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 13px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+window#waybar {
+    background: @base;
+    color: @text;
+}
+
+/* ══════════════════════════════
+   LEFT — صندوق واحد
+══════════════════════════════ */
+#group-left-box {
+    background: @base;
+    border-radius: 0px 8px 8px 0px;
+    margin: 3px 0px 3px 0px;
+    padding: 0px 8px;
+}
+
+#group-left-box * {
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0px 6px;
+}
+
+
+#workspaces button {
+    color: @surface2;
+    padding: 0px 5px;
+    background: transparent;
+}
+#workspaces button:hover {
+    color: @text;
+    background: transparent;
+    box-shadow: none;
+}
+#workspaces button.active   { color: @text; }
+#workspaces button.occupied { color: @subtext; }
+#workspaces button.empty    { color: @surface1; }
+#workspaces button.urgent   { color: @green; }
+
+/* ══════════════════════════════
+   CENTER
+══════════════════════════════ */
+#custom-planner {
+    background: transparent;
+    color: @subtext;
+    padding: 0px 14px;
+    margin: 3px 4px;
+    border-radius: 0;
+}
+#custom-planner.pending  { color: @text; }
+#custom-planner.expired  { color: @text; }
+#custom-planner.done     { color: @text; }
+
+#clock {
+    background: transparent;
+    color: @text;
+    padding: 0px 12px;
+    margin: 3px 3px;
+    border-radius: 0;
+}
+
+/* ══════════════════════════════
+   RIGHT — صندوق واحد
+══════════════════════════════ */
+#group-right-box {
+    background: @base;
+    border-radius: 8px 0px 0px 8px;
+    margin: 3px 0px 3px 0px;
+    padding: 0px 8px;
+}
+
+#group-right-box * {
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    color: @subtext;
+}
+
+#custom-privacydots,
+#custom-expand-icon,
+#network,
+#pulseaudio,
+#pulseaudio-microphone,
+#backlight,
+#battery,
+#custom-swaync {
+    padding: 0px 8px;
+}
+
+#pulseaudio.muted     { color: @red; }
+#network.disconnected { color: @red; }
+
+#backlight-slider,
+#pulseaudio-slider {
+    padding: 0px 4px;
+}
+#backlight-slider slider,
+#pulseaudio-slider slider { background: transparent; box-shadow: none; }
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    margin-top: 4px;
+    min-width: 50px;
+    min-height: 5px;
+    border-radius: 8px;
+    background: @surface0;
+}
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    background: @subtext;
+    border-radius: 8px;
+}
+
+/* ══════════════════════════════
+   MISC
+══════════════════════════════ */
+
+tooltip {
+    background: @base;
+    color: @subtext;
+    border: none;
+    border-radius: 8px;
+}
+tooltip label { color: @subtext; }
+
+
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+    color: transparent;
+}
+
+/* ══════════════════════════════
+   LAUNCHER MENU ICON
+══════════════════════════════ */
+#custom-launcher {
+    color: @subtext;
+    font-size: 16px;
+    padding: 0px 8px;
+    transition: color 0.2s;
+}
+#custom-launcher:hover {
+    color: @text;
+}
+
+
+
+/* ══════════════════════════════
+   LANGUAGE INDICATOR
+══════════════════════════════ */
+#language {
+    color: @subtext;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 6px;
+    min-width: 28px;
+}
+#language:hover {
+    color: @text;
+}

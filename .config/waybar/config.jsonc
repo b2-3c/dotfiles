@@ -1,0 +1,416 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+
+  "modules-left": [
+    "group/left-box"
+  ],
+
+    "group/left-box": {
+    "orientation": "horizontal",
+    "modules": ["custom/launcher", "hyprland/workspaces", "group/resource", "group/spotify-extender"]
+  },
+
+  "group/right-box": {
+    "orientation": "horizontal",
+    "modules": ["custom/privacydots", "group/tray-expander", "hyprland/language", "network", "group/brightness-right", "group/audio", "battery", "custom/swaync"]
+  },
+
+  "group/brightness-right": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "backlight",
+      "backlight/slider"
+    ]
+  },
+
+  "modules-center": [
+    "clock"
+  ],
+
+  "modules-right": [
+    "group/right-box"
+  ],
+
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        "10": "10",
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "*": [1,2,3,4,5]
+    }
+  },
+
+  "group/resource": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": true,
+      "children-class": "resource-group-item"
+    },
+    "modules": ["custom/pc", "cpu", "memory", "temperature"]
+  },
+  
+  "custom/pc": {
+    "format": " ",
+    "tooltips": false
+  },
+
+  "cpu": {
+    "interval": 10,
+    "format": "󰍛 {usage}%",
+    "format-warning": "󰀨 {usage}%",
+    "format-critical": "󰀨 {usage}%",
+    "min-length": 7,
+    "max-length": 7,
+    "states": {
+        "warning": 75,
+        "critical": 90
+    },
+    "tooltips": true,
+    "tooltip-format": "CPU"
+  },
+
+  "memory": {
+    "interval": 10,
+    "format": "󰘚 {percentage}%",
+    "format-warning": "󰀧 {percentage}%",
+    "format-critical": "󰀧 {percentage}%",
+    "states": {
+      "warning": 75,
+      "critical": 90
+    },
+    "tooltips": true,
+    "min-length": 7,
+    "max-length": 7,
+    "tooltip-format": "Memory Used: {used:0.1f} GB / {total:0.1f} GB"
+  },
+
+  "temperature": {
+    "thermal-zone": 1,
+    "critical-threshold": 90,
+    "interval": 10,
+    "format-critical": "󰀦 {temperatureC}°C",
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+    "󱃃", "󰔏", "󱃂"
+    ],
+    "min-length": 8,
+    "max-length": 8,
+    "tooltips": true,
+    "tooltip-format": "{temperatureF}°F"
+  },
+
+  "group/spotify-extender": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": false,
+      "children-class": "spotify-item"
+    },
+    "modules": ["custom/spotify-icon", "custom/spotify"]
+  },
+
+  "custom/spotify-icon": {
+    "exec": "/usr/bin/python3 ~/.config/waybar/scripts/mediaplayer_icon.py --player spotify",
+    "return-type": "json",
+    "on-click": "playerctl play-pause --player spotify",
+    "format": " ",
+    "tooltip": false
+  },
+
+  "custom/spotify": {
+    "exec": "/usr/bin/python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "playerctl play-pause --player spotify",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  },
+
+  "group/miscellaneous": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": true,
+      "children-class": "miscellaneous-item"
+    },
+    "modules": ["custom/miscellaneous-icon", "custom/hyprkill", "custom/recorder", "custom/screenshot", "custom/weather", "group/brightness"]
+  },
+
+  "custom/miscellaneous-icon": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "custom/hyprkill": {
+    "format": "{}",
+    "interval": "once",
+    "exec": "echo '󰅙 \nKill Clients'",
+    "on-click": "sleep 0.2 && hyprctl kill"
+  },
+
+  "custom/recorder": {
+    "format": "{}",
+    "exec": "echo   ",
+    "tooltip": true,
+    "tooltip-format": "Screen Recorder",
+    "interval": 1,
+    "on-click": "~/.config/hypr/hyprland/scripts/record.sh",
+    "signal": 9
+  },
+
+  "custom/screenshot": {
+    "format": "{}",
+    "interval": "once",
+    "exec": "echo '⛶\nScreenshot'",
+    "on-click": "hyprshot --freeze --clipboard-only --mode region --silent; pkill hyprpicker"
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "exec": "~/.config/waybar/scripts/weather.sh",
+    "return-type": "json",
+    "interval": 300,
+    "on-click": "~/.config/waybar/scripts/weather.sh"
+  },
+
+  "group/brightness": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "backlight",
+      "backlight/slider"
+    ]
+  },
+
+  "backlight": {
+    "device": "auto",
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "on-scroll-down": "brightnessctl s 5%-",
+    "on-scroll-up": "brightnessctl s +5%",
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}% ",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "backlight/slider": {
+    "min": 5,
+    "max": 100,
+    "orientation": "horizontal",
+    "device": "auto"
+  },
+
+  "clock": {
+    "format": " {:%I:%M %p}",
+    "format-alt": "󰃭 {:%a %d %b %Y}",
+    "interval": 60,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "on-click": "waybar-toggle-clock",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months":   "<span color='#a6adc8'><b>{}</b></span>",
+        "weekdays": "<span color='#a6adc8'><b>{}</b></span>",
+        "today":    "<span color='#a6adc8'><b>{}</b></span>",
+        "days":     "<span color='#555869'><b>{}</b></span>"
+      }
+    }
+  },
+
+  
+
+  "custom/privacydots": {
+    "exec": "~/.config/waybar/scripts/privacy_dots.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true,
+    "escape": false,
+    "markup": "pango"
+  },
+
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray", "pulseaudio#microphone"]
+  },
+
+  "custom/expand-icon": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "tray": {
+    "icon-size": 12,
+    "spacing": 17
+  },
+
+  "pulseaudio#microphone": {
+     "format": "{format_source}",
+     "format-source": "",
+     "format-source-muted": " ",
+     "on-click": "pamixer --default-source -t",
+     "on-scroll-up": "pamixer --default-source -i 5",
+     "on-scroll-down": "pamixer --default-source -d 5",
+     "scroll-step": 5
+  },
+
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "EN",
+    "format-ar": "AR",
+    "tooltip": false,
+    "on-click": "hyprctl switchxkblayout all next"
+  },
+
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "pkill rofi || bash ~/.config/rofi/scripts/network-menu.sh"
+  },
+
+  "group/audio": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "tooltip-format": "{volume}% {icon} | {desc}",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphones": "󰋌",
+      "handsfree": "󰋌",
+      "headset": "󰋌",
+      "phone": "",
+      "portable": "",
+      "car": " ",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "on-click": "omarchy-launch-audio",
+    "on-click-right": "pamixer -t",
+    "on-click-middle": "pavucontrol",
+    "on-scroll-up": "pamixer -i 5 --allow-boost",
+    "on-scroll-down": "pamixer -d 5",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 140,
+    "orientation": "horizontal"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": {
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+
+  "custom/swaync": {
+    "tooltip": true,
+    "tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/launcher": {
+    "format": "󰀻",
+    "tooltip": false,
+    "on-click": "pkill rofi || bash ~/.config/rofi/scripts/launcher-menu.sh"
+  }
+}

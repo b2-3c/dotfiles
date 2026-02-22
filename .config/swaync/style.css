@@ -1,0 +1,96 @@
+/* استدعاء السمة المطلوبة */
+@import "theme.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    border-radius: 0px !important; 
+}
+
+/* مركز التحكم الرئيسي */
+.control-center {
+    background: @main-bg;
+    color: @main-fg;
+    border: 2px solid @border;
+    border-radius: 0px;
+    margin: 10px;
+}
+
+/* التنبيهات الفردية */
+.notification-row .notification {
+    background: @hover;
+    border: 1px solid @active;
+    color: @main-fg;
+    border-radius: 0px;
+    margin: 8px;
+    padding: 10px;
+}
+
+/* ══════════════════════════════
+   أزرار Quick Settings
+══════════════════════════════ */
+
+/* الأزرار الغير مفعّلة — خلفية خافتة + نص باهت */
+.widget-buttons-grid button {
+    background: @hover;
+    border: 1px solid @active;
+    color: @inactive-fg;
+    margin: 5px;
+    border-radius: 0px;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* الأزرار المفعّلة — لون بارز واضح */
+.widget-buttons-grid button:checked,
+.widget-buttons-grid button.toggle-button:checked {
+    background: @accent-bg;
+    border: 1px solid @accent;
+    color: @accent;
+}
+
+/* hover على الأزرار */
+.widget-buttons-grid button:hover {
+    background: @active;
+    color: @main-fg;
+}
+
+/* ══════════════════════════════
+   أشرطة التحكم
+══════════════════════════════ */
+trough {
+    background: @hover;
+    min-height: 10px;
+    border-radius: 0px;
+}
+
+highlight {
+    background: @accent;
+    border-radius: 0px;
+}
+
+/* مشغل الوسائط */
+.widget-mpris {
+    background: @hover;
+    border-radius: 0px;
+}
+
+/* زر عدم الإزعاج */
+.widget-dnd {
+    background: @hover;
+    border-radius: 0px;
+}
+
+.widget-dnd switch {
+    border-radius: 0px;
+    background: @active;
+}
+
+.widget-dnd switch:checked {
+    background: @accent-bg;
+}
+
+.widget-dnd switch slider {
+    border-radius: 0px;
+    background: @main-fg;
+}
+

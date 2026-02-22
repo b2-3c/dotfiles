@@ -1,0 +1,10 @@
+/* Catppuccin Frappe — Waybar colors */
+@define-color base     #303446;
+@define-color surface0 #414559;
+@define-color surface1 #51576d;
+@define-color surface2 #626880;
+@define-color subtext  #a5adce;
+@define-color text     #c6d0f5;
+@define-color blue     #8caaee;
+@define-color red      #e78284;
+@define-color green    #a6d189;
