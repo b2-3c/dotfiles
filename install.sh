@@ -47,14 +47,22 @@ install_pkgs() {
     local label="$1"; shift
     local pkgs=("$@")
     info "Installing: $label"
-    paru -S --noconfirm --needed --noprogressbar "${pkgs[@]}" 2>/dev/null || {
-        for pkg in "${pkgs[@]}"; do
-            paru -S --noconfirm --needed --noprogressbar "$pkg" 2>/dev/null \
-                && ok "$pkg" \
-                || warn "Skipped (not found): $pkg"
-        done
-    }
-    ok "$label installed"
+    # حاول تثبيت الكل دفعة واحدة أولاً
+    if yay -S --noconfirm --needed --noprogressbar "${pkgs[@]}" 2>/dev/null; then
+        ok "$label installed"
+        return 0
+    fi
+    # إذا فشل → ثبّت كل حزمة بشكل منفرد لتجاوز الحزم غير الموجودة
+    local failed=0
+    for pkg in "${pkgs[@]}"; do
+        yay -S --noconfirm --needed --noprogressbar "$pkg" 2>/dev/null \
+            && ok "$pkg" \
+            || { warn "Skipped (not found): $pkg"; failed=$((failed+1)); }
+    done
+    [[ $failed -eq ${#pkgs[@]} ]] \
+        && warn "All packages in '$label' failed" \
+        || ok "$label installed (with $failed skipped)"
+    return 0
 }
 
 # ══════════════════════════════════════════════════════════
@@ -144,7 +152,7 @@ paru() { yay "$@"; }
 export -f paru
 
 info "Syncing package database..."
-sudo pacman -Sy --noconfirm &>/dev/null
+sudo pacman -Syu --noconfirm &>/dev/null
 ok "Database synced"
 
 # ══════════════════════════════════════════════════════════
@@ -307,8 +315,7 @@ install_pkgs "GTK Themes" \
     gsettings-desktop-schemas
 
 install_pkgs "Package manager extras" \
-    pacman-contrib \
-    paru
+    pacman-contrib
 
 # ══════════════════════════════════════════════════════════
 #  8. Deploy Dotfiles
@@ -489,7 +496,11 @@ if ! command -v starship &>/dev/null; then
 fi
 for rc in "$HOME/.bashrc" "$HOME/.zshrc"; do
     if [ -f "$rc" ] && ! grep -q "starship" "$rc"; then
-        echo 'eval "$(starship init bash)"' >> "$rc" 2>/dev/null || true
+        if [[ "$rc" == *".zshrc" ]]; then
+            echo 'eval "$(starship init zsh)"' >> "$rc" 2>/dev/null || true
+        else
+            echo 'eval "$(starship init bash)"' >> "$rc" 2>/dev/null || true
+        fi
         info "Starship added to $rc"
     fi
 done
@@ -527,7 +538,7 @@ if [[ -n "$KB_NAME" ]]; then
     LANG_CONF="$CONFIG_DIR/waybar/config.jsonc"
     # أضف keyboard-name إذا لم يكن موجوداً
     if ! grep -q "keyboard-name" "$LANG_CONF"; then
-        sed -i "s|"format-en": "EN",|"format-en": "EN",\n    "keyboard-name": "$KB_NAME",|" "$LANG_CONF"
+        sed -i 's|"format-en": "EN",|"format-en": "EN",\n    "keyboard-name": "'"$KB_NAME"'",|' "$LANG_CONF"
     fi
     ok "Keyboard detected: $KB_NAME"
 else
