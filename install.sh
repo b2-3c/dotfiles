@@ -71,21 +71,77 @@ fi
 
 sudo -v || { err "sudo required"; exit 1; }
 
-if ! command -v paru &>/dev/null; then
-    if command -v yay &>/dev/null; then
-        info "paru not found, using yay..."
-        alias paru=yay
-    else
-        info "Installing paru (AUR helper)..."
-        sudo pacman -S --needed --noconfirm git base-devel
-        git clone https://aur.archlinux.org/paru.git /tmp/paru-build
-        cd /tmp/paru-build && makepkg -si --noconfirm && cd "$DOTFILES_DIR"
-        rm -rf /tmp/paru-build
-        ok "paru installed"
+# ── دالة مساعدة: clone مع إعادة المحاولة ──────────────────
+_aur_clone() {
+    local repo_url="$1"
+    local dest="$2"
+    for attempt in 1 2 3; do
+        info "Cloning $(basename "$dest") (attempt $attempt/3)..."
+        rm -rf "$dest"
+        if git clone "$repo_url" "$dest" 2>/dev/null; then
+            return 0
+        fi
+        warn "Clone failed, retrying in 3 seconds..."
+        sleep 3
+    done
+    return 1
+}
+
+# ── تثبيت yay ─────────────────────────────────────────────
+if ! command -v yay &>/dev/null; then
+    info "yay not found. Installing yay (AUR helper)..."
+
+    # تأكد من وجود git و base-devel
+    sudo pacman -S --needed --noconfirm git base-devel
+
+    # فحص الاتصال بالإنترنت أولاً
+    info "Checking network connectivity..."
+    if ! curl -fsS --max-time 10 https://google.com > /dev/null 2>&1; then
+        err "No internet connection detected."
+        err "Please check your network and try again."
+        exit 1
     fi
+    ok "Network OK"
+
+    YAY_INSTALLED=""
+
+    # ── محاولة 1: yay من AUR ──
+    info "Trying yay from AUR..."
+    if curl -fsS --max-time 10 https://aur.archlinux.org > /dev/null 2>&1; then
+        if _aur_clone "https://aur.archlinux.org/yay.git" /tmp/yay-build; then
+            cd /tmp/yay-build && makepkg -si --noconfirm && cd "$DOTFILES_DIR"
+            rm -rf /tmp/yay-build
+            YAY_INSTALLED="yes"
+            ok "yay installed"
+        fi
+    else
+        warn "aur.archlinux.org unreachable, trying GitHub mirror..."
+    fi
+
+    # ── محاولة 2: yay من GitHub (mirror) ──
+    if [[ -z "$YAY_INSTALLED" ]]; then
+        info "Trying yay from GitHub mirror..."
+        if _aur_clone "https://github.com/Jguer/yay.git" /tmp/yay-build; then
+            cd /tmp/yay-build && makepkg -si --noconfirm && cd "$DOTFILES_DIR"
+            rm -rf /tmp/yay-build
+            YAY_INSTALLED="yes"
+            ok "yay installed from GitHub mirror"
+        fi
+    fi
+
+    if [[ -z "$YAY_INSTALLED" ]]; then
+        err "Failed to install yay."
+        err "Check your internet connection and try again."
+        exit 1
+    fi
+
 else
-    ok "paru found"
+    ok "yay found"
 fi
+
+# ── استخدام yay عبر اسم paru (لبقية السكريبت) ────────────
+paru() { yay "$@"; }
+export -f paru
 
 info "Syncing package database..."
 sudo pacman -Sy --noconfirm &>/dev/null
