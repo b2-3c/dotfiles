@@ -1,0 +1,9 @@
+/* Catppuccin Macchiato for SwayNC */
+@define-color main-bg    #181926;    /* crust        */
+@define-color main-fg    #cad3f5;    /* text         */
+@define-color accent     #b7bdf8;    /* lavender     */
+@define-color accent-bg  #24273a;    /* base         */
+@define-color hover      #363a4f;    /* surface0     */
+@define-color active     #5b6078;    /* surface2     */
+@define-color border     #6e738d;    /* overlay0     */
+@define-color inactive-fg #5b6078;   /* surface2     */

@@ -1,0 +1,4 @@
+#!/bin/bash
+# Toggle clock between time (format) and date (format-alt)
+# waybar switches to format-alt when it receives SIGUSR1
+pkill -SIGUSR1 waybar

@@ -1,0 +1,121 @@
+/* nowplaying — catppuccin mocha | sharp edges | normal window */
+
+@import "~/.config/rofi/theme.rasi"
+
+configuration {
+    show-icons:   false;
+    window-type:  "normal";
+}
+
+window {
+    fullscreen:       false;
+    width:            500px;
+    height:           360px;
+    enabled:          true;
+    cursor:           "default";
+    background-color: @base;
+    border:           2px;
+    border-color:     @main-br;
+    border-radius:    0px;
+    padding:          20px;
+}
+
+mainbox {
+    enabled:          true;
+    spacing:          16px;
+    background-color: transparent;
+    orientation:      vertical;
+    children:         [ "top-message", "middle-wrapper", "listview" ];
+}
+
+top-message {
+    enabled:          true;
+    padding:          0px;
+    background-color: transparent;
+    children:         [ "textbox-msg" ];
+    expand:           false;
+}
+
+textbox-msg {
+    expand:           true;
+    background-color: transparent;
+    text-color:       @main-br;
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    str:              "󰎆  Now Playing";
+    font:             "Commit Mono Nerd Font Bold 13";
+}
+
+middle-wrapper {
+    enabled:          true;
+    orientation:      horizontal;
+    spacing:          16px;
+    background-color: transparent;
+    expand:           true;
+    children:         [ "album-art", "custom-text-box" ];
+}
+
+album-art {
+    enabled:          true;
+    width:            160px;
+    height:           160px;
+    background-color: @mantle;
+    background-image: url("~/.config/rofi/nowplaying/album_art.png", height);
+    border-radius:    0px;
+    expand:           false;
+}
+
+custom-text-box {
+    enabled:          true;
+    expand:           true;
+    padding:          16px;
+    background-color: @mantle;
+    border-radius:    0px;
+    children:         [ "textbox-custom" ];
+}
+
+textbox-custom {
+    background-color: transparent;
+    text-color:       @text;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+    markup:           true;
+    font:             "Commit Mono Nerd Font Bold 12";
+    str:              "Loading...";
+}
+
+listview {
+    enabled:          true;
+    columns:          3;
+    lines:            1;
+    dynamic:          true;
+    reverse:          false;
+    spacing:          12px;
+    background-color: transparent;
+    cursor:           "default";
+    expand:           false;
+}
+
+element {
+    enabled:          true;
+    padding:          12px;
+    border-radius:    0px;
+    cursor:           pointer;
+    background-color: @mantle;
+    text-color:       @text;
+    orientation:      horizontal;
+}
+
+element selected {
+    background-color: @select-bg;
+    text-color:       @select-fg;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    cursor:           inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.5;
+    font:             "Commit Mono Nerd Font 16";
+}

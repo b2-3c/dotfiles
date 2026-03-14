@@ -1,0 +1,10 @@
+/* Catppuccin Latte — Waybar colors */
+@define-color base     #eff1f5;
+@define-color surface0 #ccd0da;
+@define-color surface1 #bcc0cc;
+@define-color surface2 #acb0be;
+@define-color subtext  #6c6f85;
+@define-color text     #4c4f69;
+@define-color blue     #1e66f5;
+@define-color red      #d20f39;
+@define-color green    #40a02b;

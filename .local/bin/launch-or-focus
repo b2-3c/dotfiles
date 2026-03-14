@@ -1,0 +1,29 @@
+#!/bin/bash
+# Launch an app or focus its window if already open.
+# Usage: omarchy-launch-or-focus <app_id> <launch_command>
+APP_ID="$1"
+shift
+LAUNCH_COMMAND="$@"
+
+# Check if a window with this app_id/class is already open via hyprctl
+if command -v hyprctl &>/dev/null; then
+    FOCUSED=$(hyprctl clients -j 2>/dev/null | \
+        python3 -c "
+import sys, json
+clients = json.load(sys.stdin)
+app_id = '${APP_ID}'
+for c in clients:
+    if c.get('initialClass','') == app_id or c.get('class','') == app_id:
+        print(c.get('address',''))
+        break
+" 2>/dev/null)
+
+    if [[ -n "$FOCUSED" ]]; then
+        # Focus existing window
+        hyprctl dispatch focuswindow "address:$FOCUSED" &>/dev/null
+        exit 0
+    fi
+fi
+
+# Not found — launch it
+exec $LAUNCH_COMMAND

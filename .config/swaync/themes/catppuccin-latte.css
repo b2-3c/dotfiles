@@ -1,0 +1,9 @@
+/* Catppuccin Latte for SwayNC */
+@define-color main-bg    #dce0e8;    /* crust        */
+@define-color main-fg    #4c4f69;    /* text         */
+@define-color accent     #7287fd;    /* lavender     */
+@define-color accent-bg  #eff1f5;    /* base         */
+@define-color hover      #ccd0da;    /* surface0     */
+@define-color active     #acb0be;    /* surface2     */
+@define-color border     #9ca0b0;    /* overlay0     */
+@define-color inactive-fg #acb0be;   /* surface2     */
